@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rizwana Ladies Tailor | Custom Stitching</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Rizwana Ladies Tailor</h1>
+    <p>Custom Stitching • Perfect Fit • Trusted Work</p>
+    <a class="btn" href="https://wa.me/917075721372" target="_blank">
+        💬 Send Design on WhatsApp
+    </a>
+</header>
+
+<section class="process">
+    <h2>Simple & Easy Process</h2>
+    <div class="steps">
+        <div>📸 Send Your Design</div>
+        <div>💰 Get Price & Time</div>
+        <div>🧵 Perfect Stitching</div>
+        <div>📦 Delivery / Pickup</div>
+    </div>
+</section>
+
+<section class="about">
+    <h2>About Rizwana</h2>
+    <p>
+        Rizwana is an experienced ladies tailor providing high-quality custom stitching
+        with special attention to fitting, comfort, and finishing.
+        Every dress is stitched with care, just the way you want.
+    </p>
+</section>
+
+<section class="gallery">
+    <h2>Designs & Stitching Work</h2>
+    <p>Click on any design to view details</p>
+
+    <div class="images">
+        <img src="images/1.jpg" alt="Blouse Design 1" onclick="openModal(this)">
+        <img src="images/2.jpg" alt="Blouse Design 2" onclick="openModal(this)">
+        <img src="images/3.jpg" alt="Kurti Design 1" onclick="openModal(this)">
+        <img src="images/4.jpg" alt="Kurti Design 2" onclick="openModal(this)">
+    </div>
+</section>
+
+<!-- IMAGE MODAL -->
+<div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+
+    <img id="modalImage" class="modal-content">
+    <p id="modalCaption"></p>
+
+    <div class="modal-buttons">
+        <button onclick="addToCart()">🛒 Add to Cart</button>
+        <a id="whatsappLink" target="_blank">
+            💬 Send Reference on WhatsApp
+        </a>
+    </div>
+</div>
+</section>
+
+<section class="order">
+    <h2>How to Place an Order</h2>
+    <ul>
+        <li>✔ Choose a design from the website or your own reference</li>
+        <li>✔ Send the photo on WhatsApp</li>
+        <li>✔ Receive price and delivery timeline</li>
+        <li>✔ Stitching starts after confirmation</li>
+        <li>✔ Delivery or pickup available</li>
+    </ul>
+</section>
+
+<section class="contact">
+    <h2>Contact & Orders</h2>
+    <p><strong>📞 Phone / WhatsApp:</strong> 7075721372</p>
+    <p><strong>📍 Location:</strong> NSP Colony, Kurichedu, Ongole, Andhra Pradesh</p>
+    <p><strong>🕒 Working Hours:</strong> 10:00 AM – 7:00 PM</p>
+
+    <a class="btn" href="https://wa.me/917075721372" target="_blank">
+        📲 Order Now on WhatsApp
+    </a>
+</section>
+
+<footer>
+    <p>© 2026 Rizwana Ladies Tailor • All Rights Reserved</p>
+</footer>
+
+<script>
+let selectedDesign = "";
+
+function openModal(img) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const caption = document.getElementById("modalCaption");
+    const whatsapp = document.getElementById("whatsappLink");
+
+    selectedDesign = img.alt;
+
+    modal.style.display = "block";
+    modalImg.src = img.src;
+    caption.innerText = img.alt;
+
+    const message = encodeURIComponent(
+    "Hello Rizwana,\n\nI like this design:\n" +
+    img.alt +
+    "\n\nImage reference:\n" +
+    window.location.href.replace("index.html","") + img.src +
+    "\n\nPlease tell me the price and stitching time."
+);
+
+
+    whatsapp.href = "https://wa.me/917075721372?text=" + message;
+}
+
+function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+}
+
+function addToCart() {
+    alert("Design added to cart: " + selectedDesign + 
+          "\n(You can review cart later)");
+}
+</script>
+
+
+</body>
+</html>
