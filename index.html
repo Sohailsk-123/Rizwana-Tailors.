@@ -40,10 +40,10 @@
     <p>Click on any design to view details</p>
 
     <div class="images">
-        <img src="images/1.jpg" alt="Blouse Design 1" onclick="openModal(this)">
-        <img src="images/2.jpg" alt="Blouse Design 2" onclick="openModal(this)">
-        <img src="images/3.jpg" alt="Kurti Design 1" onclick="openModal(this)">
-        <img src="images/4.jpg" alt="Kurti Design 2" onclick="openModal(this)">
+        <img src="images/1.jpg" alt="Blouse Design 1" data-id="blouse1" onclick="openModal(this)">
+        <img src="images/2.jpg" alt="Blouse Design 2" data-id="blouse2" onclick="openModal(this)">
+        <img src="images/3.jpg" alt="Kurti Design 1"  data-id="kurti1"  onclick="openModal(this)">
+        <img src="images/4.jpg" alt="Kurti Design 2"  data-id="kurti2"  onclick="openModal(this)">
     </div>
 </section>
 
@@ -61,13 +61,12 @@
         </a>
     </div>
 </div>
-</section>
 
 <section class="order">
     <h2>How to Place an Order</h2>
     <ul>
         <li>✔ Choose a design from the website or your own reference</li>
-        <li>✔ Send the photo on WhatsApp</li>
+        <li>✔ Send the reference link on WhatsApp</li>
         <li>✔ Receive price and delivery timeline</li>
         <li>✔ Stitching starts after confirmation</li>
         <li>✔ Delivery or pickup available</li>
@@ -90,7 +89,8 @@
 </footer>
 
 <script>
-let selectedDesign = "";
+let selectedDesignId = "";
+let selectedDesignName = "";
 
 function openModal(img) {
     const modal = document.getElementById("imageModal");
@@ -98,34 +98,53 @@ function openModal(img) {
     const caption = document.getElementById("modalCaption");
     const whatsapp = document.getElementById("whatsappLink");
 
-    selectedDesign = img.alt;
+    selectedDesignId = img.getAttribute("data-id");
+    selectedDesignName = img.alt;
 
     modal.style.display = "block";
     modalImg.src = img.src;
     caption.innerText = img.alt;
 
-    const message = encodeURIComponent(
-    "Hello Rizwana,\n\nI like this design:\n" +
-    img.alt +
-    "\n\nImage reference:\n" +
-    window.location.href.replace("index.html","") + img.src +
-    "\n\nPlease tell me the price and stitching time."
-);
+    const productLink =
+        window.location.origin +
+        window.location.pathname.replace(/index\.html$/, "") +
+        "#" +
+        selectedDesignId;
 
+    const message = encodeURIComponent(
+        "Hello Rizwana,\n\n" +
+        "I am interested in this design:\n" +
+        selectedDesignName +
+        "\n\nReference link:\n" +
+        productLink +
+        "\n\nPlease share the price and stitching time."
+    );
 
     whatsapp.href = "https://wa.me/917075721372?text=" + message;
+
+    window.location.hash = selectedDesignId;
 }
 
 function closeModal() {
     document.getElementById("imageModal").style.display = "none";
+    history.pushState("", document.title, window.location.pathname);
 }
 
 function addToCart() {
-    alert("Design added to cart: " + selectedDesign + 
-          "\n(You can review cart later)");
+    alert("Design added to cart:\n" + selectedDesignName);
 }
-</script>
 
+window.onload = function () {
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) return;
+
+    document.querySelectorAll(".gallery img").forEach(img => {
+        if (img.getAttribute("data-id") === hash) {
+            openModal(img);
+        }
+    });
+};
+</script>
 
 </body>
 </html>
