@@ -24,7 +24,9 @@
     <h1>Rizwana Ladies Tailor</h1>
     <p>Stitching & Ready-Made Dresses</p>
     <p style="margin-top:6px;">🚚 Delivery Available Across India</p>
-
+    <div style="margin-top:15px;">
+    <a href="cart.html" class="btn">🛒 View Cart</a>
+</div>
     <a class="whatsapp-main" href="https://wa.me/917075721372" target="_blank">
         💬 Order on WhatsApp
     </a>
@@ -33,10 +35,16 @@
 <!-- SEARCH BAR -->
 <section style="padding-top:30px; padding-bottom:20px;">
     <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search blouse, saree, burqa, dress…">
+        <input type="text"
+               id="searchInput"
+               placeholder="Search blouse, saree, burqa, dress…"
+               onkeyup="showSuggestions()">
         <button onclick="searchProduct()">🔍</button>
     </div>
+
+    <div id="searchSuggestions" class="search-suggestions"></div>
 </section>
+
 
 <!-- RETAIL SECTION -->
 <section class="division retail-section">
@@ -66,7 +74,7 @@
         </a>
 
         <a href="dress-stitching.html" class="category-card">
-            <img src="images/home-dress.jpg" alt="Dress Stitching">
+            <img src="images/home-frocks.jpg" alt="Dress Stitching">
             <div class="card-label">Dress Stitching</div>
         </a>
     </div>
@@ -112,30 +120,44 @@
 
 <!-- SEARCH SCRIPT -->
 <script>
+const products = [
+    { name: "Sarees", link: "sarees.html" },
+    { name: "Burqas", link: "burqas.html" },
+    { name: "Blouse Stitching", link: "blouse-stitching.html" },
+    { name: "Dress Stitching", link: "dress-stitching.html" },
+    { name: "Anarkali", link: "dress-stitching.html" },
+    { name: "Chudidar", link: "dress-stitching.html" },
+    { name: "Salwar Kameez", link: "dress-stitching.html" }
+];
+
+function showSuggestions() {
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    const box = document.getElementById("searchSuggestions");
+    box.innerHTML = "";
+
+    if (!input) return;
+
+    products.forEach(p => {
+        if (p.name.toLowerCase().includes(input)) {
+            const div = document.createElement("div");
+            div.innerText = p.name;
+            div.onclick = () => window.location.href = p.link;
+            box.appendChild(div);
+        }
+    });
+}
+
 function searchProduct() {
-    const q = document.getElementById("searchInput").value.toLowerCase();
-
-    if (!q) return;
-
-    if (q.includes("saree")) {
-        window.location.href = "sarees.html";
-    } else if (q.includes("burqa")) {
-        window.location.href = "burqas.html";
-    } else if (q.includes("blouse")) {
-        window.location.href = "blouse-stitching.html";
-    } else if (
-        q.includes("dress") ||
-        q.includes("frock") ||
-        q.includes("anarkali") ||
-        q.includes("chudidar") ||
-        q.includes("salwar")
-    ) {
-        window.location.href = "dress-stitching.html";
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    const found = products.find(p => p.name.toLowerCase().includes(input));
+    if (found) {
+        window.location.href = found.link;
     } else {
-        alert("Please search blouse, saree, burqa or dress");
+        alert("Please select from suggestions");
     }
 }
 </script>
+
 
 </body>
 </html>
