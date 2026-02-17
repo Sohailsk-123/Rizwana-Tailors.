@@ -79,20 +79,17 @@ let selectedDesignId = "";
 let selectedDesignName = "";
 
 function openModal(img) {
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImage");
-    const caption = document.getElementById("modalCaption");
-    const whatsapp = document.getElementById("whatsappLink");
-
-    imagesList = img.getAttribute("data-images").split(",");
+    imagesList = img.dataset.images.split(",");
     currentIndex = 0;
 
-    selectedDesignId = img.getAttribute("data-id");
+    selectedDesignId = img.dataset.id;
     selectedDesignName = img.alt;
 
-    modal.style.display = "block";
-    modalImg.src = imagesList[currentIndex];
-    caption.innerText = img.alt;
+    document.getElementById("imageModal").style.display = "block";
+    document.getElementById("modalImage").src = imagesList[currentIndex];
+    document.getElementById("modalCaption").innerText = img.alt;
+
+    createDots();
 
     const productLink =
         window.location.origin +
@@ -102,34 +99,60 @@ function openModal(img) {
 
     const message = encodeURIComponent(
         "Hello Rizwana,\n\n" +
-        "I want to buy this saree:\n" +
+        "I want to buy this item:\n" +
         selectedDesignName +
         "\n\nReference:\n" +
         productLink
     );
 
-    whatsapp.href = "https://wa.me/917075721372?text=" + message;
+    document.getElementById("whatsappLink").href =
+        "https://wa.me/917075721372?text=" + message;
 }
 
 function nextImage() {
     if (currentIndex < imagesList.length - 1) {
         currentIndex++;
-        document.getElementById("modalImage").src = imagesList[currentIndex];
+        updateSlider();
     }
 }
 
 function prevImage() {
     if (currentIndex > 0) {
         currentIndex--;
-        document.getElementById("modalImage").src = imagesList[currentIndex];
+        updateSlider();
     }
+}
+
+function updateSlider() {
+    document.getElementById("modalImage").src = imagesList[currentIndex];
+    updateDots();
 }
 
 function closeModal() {
     document.getElementById("imageModal").style.display = "none";
 }
-</script>
 
+/* ===== DOTS ===== */
+function createDots() {
+    const dotsContainer = document.getElementById("dotsContainer");
+    dotsContainer.innerHTML = "";
+
+    imagesList.forEach((_, index) => {
+        const dot = document.createElement("span");
+        dot.className = "dot" + (index === 0 ? " active" : "");
+        dot.onclick = () => {
+            currentIndex = index;
+            updateSlider();
+        };
+        dotsContainer.appendChild(dot);
+    });
+}
+
+function updateDots() {
+    document.querySelectorAll(".dot").forEach((dot, index) => {
+        dot.classList.toggle("active", index === currentIndex);
+    });
+}
 </script>
 
 </body>
