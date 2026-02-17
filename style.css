@@ -486,13 +486,14 @@ footer {
     color: #444;
 }
 
-/* CONTACT */
-/* ===== CONTACT GRADIENT ===== */
+/* ===== CONTACT GRADIENT (ELEGANT) ===== */
 .contact-section {
-    background: linear-gradient(135deg, #ffffff, #f0f6f8);
+    background: linear-gradient(135deg, #f7fbfc 0%, #e6f2f4 50%, #ffffff 100%);
     padding: 60px 20px;
-    border-radius: 20px;
+    border-radius: 22px;
+    box-shadow: 0 14px 35px rgba(0,0,0,0.08);
 }
+
 
 /* ===== SEARCH SUGGESTIONS ===== */
 .search-suggestions {
@@ -519,4 +520,31 @@ footer {
     padding: 60px 20px;
     border-radius: 20px;
     box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+/* ===== MOVING HEADLINE / TICKER ===== */
+.news-ticker {
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(90deg, #eef5f7, #ffffff);
+    padding: 6px 0;
+    border-bottom: 1px solid #dde5e8;
+}
+
+.ticker-text {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 0.85rem;
+    color: #0f4c5c;
+    font-weight: 600;
+    padding-left: 100%;
+    animation: scrollText 12s linear infinite;
+}
+
+@keyframes scrollText {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
 }
