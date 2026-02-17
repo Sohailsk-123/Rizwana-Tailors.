@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burqas | Rizwana Ladies Tailor</title>
+
+    <meta name="description" content="Ready-made burqas available at Rizwana Ladies Tailor, Kurichedu.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>🧕 Burqas</h1>
+    <p>Ready-Made • Buy on WhatsApp</p>
+
+    <a class="whatsapp-main" href="https://wa.me/917075721372" target="_blank">
+        💬 Order on WhatsApp
+    </a>
+</header>
+
+<section class="gallery">
+    <h2>Choose Your Burqa</h2>
+
+<div class="images">
+    <img src="images/burqa-01-1.jpg"
+         alt="Burqa 01"
+         data-id="burqa01"
+         data-images="images/burqa-01-1.jpg,images/burqa-01-2.jpg,images/burqa-01-3.jpg"
+         onclick="openModal(this)">
+
+</div>
+</section>
+
+<!-- MODAL -->
+<div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+
+    <div class="slider">
+        <button class="slide-btn left" onclick="prevImage()">❮</button>
+
+        <img id="modalImage" class="modal-content">
+
+        <button class="slide-btn right" onclick="nextImage()">❯</button>
+    </div>
+
+    <!-- DOT INDICATORS -->
+    <div id="dotsContainer" class="dots"></div>
+
+    <p id="modalCaption"></p>
+
+    <div class="modal-buttons">
+        <a id="whatsappLink" target="_blank">💬 Buy on WhatsApp</a>
+    </div>
+</div>
+
+
+<footer>
+    <p>📍 Kurichedu • 📞 7075721372</p>
+</footer>
+
+<script>
+let imagesList = [];
+let currentIndex = 0;
+let selectedDesignId = "";
+let selectedDesignName = "";
+
+function openModal(img) {
+    imagesList = img.dataset.images.split(",");
+    currentIndex = 0;
+
+    selectedDesignId = img.dataset.id;
+    selectedDesignName = img.alt;
+
+    document.getElementById("imageModal").style.display = "block";
+    document.getElementById("modalImage").src = imagesList[currentIndex];
+    document.getElementById("modalCaption").innerText = img.alt;
+
+    createDots();
+
+    const productLink =
+        window.location.origin +
+        window.location.pathname.replace(/index\.html$/, "") +
+        "#" +
+        selectedDesignId;
+
+    const message = encodeURIComponent(
+        "Hello Rizwana,\n\n" +
+        "I want to buy this item:\n" +
+        selectedDesignName +
+        "\n\nReference:\n" +
+        productLink
+    );
+
+    document.getElementById("whatsappLink").href =
+        "https://wa.me/917075721372?text=" + message;
+}
+
+function nextImage() {
+    if (currentIndex < imagesList.length - 1) {
+        currentIndex++;
+        updateSlider();
+    }
+}
+
+function prevImage() {
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateSlider();
+    }
+}
+
+function updateSlider() {
+    document.getElementById("modalImage").src = imagesList[currentIndex];
+    updateDots();
+}
+
+function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+}
+
+/* ===== DOTS ===== */
+function createDots() {
+    const dotsContainer = document.getElementById("dotsContainer");
+    dotsContainer.innerHTML = "";
+
+    imagesList.forEach((_, index) => {
+        const dot = document.createElement("span");
+        dot.className = "dot" + (index === 0 ? " active" : "");
+        dot.onclick = () => {
+            currentIndex = index;
+            updateSlider();
+        };
+        dotsContainer.appendChild(dot);
+    });
+}
+
+function updateDots() {
+    document.querySelectorAll(".dot").forEach((dot, index) => {
+        dot.classList.toggle("active", index === currentIndex);
+    });
+}
+</script>
+
+</body>
+</html>

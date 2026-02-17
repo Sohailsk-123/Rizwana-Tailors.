@@ -1,0 +1,356 @@
+/* ========== RESET ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ========== ROOT COLORS ========== */
+:root {
+    --primary: #0f4c5c;
+    --secondary: #1b6f82;
+    --accent: #c9a227;
+    --bg: #f5f7f8;
+    --card: #ffffff;
+    --text-dark: #243333;
+}
+
+/* ========== BODY ========== */
+body {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* ========== HEADER (MODERN HERO) ========== */
+header {
+    position: relative;
+    background: url("images/header-bg.jpg") center / cover no-repeat;
+    color: #fff;
+    padding: 90px 20px 70px;
+    text-align: center;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+header * {
+    position: relative;
+    z-index: 1;
+}
+
+
+header::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to bottom, rgba(245,247,248,0), var(--bg));
+}
+
+header h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+header p {
+    margin-top: 8px;
+    font-size: 1.1rem;
+    opacity: 0.95;
+}
+
+/* ========== PRIMARY CTA BUTTON ========== */
+.btn,
+.whatsapp-main {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 34px;
+    background: linear-gradient(135deg, #25d366, #1ebe5d);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn:hover,
+.whatsapp-main:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.35);
+}
+
+/* ========== SECTIONS ========== */
+section {
+    max-width: 1150px;
+    margin: auto;
+    padding: 60px 18px;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 35px;
+    color: var(--primary);
+}
+
+/* ========== HOME CATEGORY GRID ========== */
+.home-categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.category-card {
+    position: relative;
+    height: 240px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #ddd;
+    text-decoration: none;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.65),
+        rgba(0,0,0,0.1)
+    );
+}
+
+.card-label {
+    position: absolute;
+    bottom: 16px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    z-index: 2;
+}
+
+/* ========== IMAGE GRIDS (CATALOG PAGES) ========== */
+.images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.images img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 14px;
+    cursor: pointer;
+    background: #eaeaea;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease;
+}
+
+.images img:hover {
+    transform: scale(1.05);
+}
+
+/* ========== INFO STRIP (ICONS) ========== */
+.info-strip {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    text-align: center;
+    background: var(--card);
+    margin: 40px auto 0;
+    padding: 20px 10px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.info-strip div {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* ========== MODAL ========== */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 999;
+    padding-top: 60px;
+}
+
+.modal-content {
+    display: block;
+    margin: auto;
+    max-width: 90%;
+    max-height: 60vh;
+    border-radius: 18px;
+}
+
+.modal p {
+    color: #fff;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 1.1rem;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 36px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 25px;
+}
+
+.modal-buttons button,
+.modal-buttons a {
+    padding: 12px 26px;
+    border-radius: 30px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+}
+
+.modal-buttons button {
+    background: var(--accent);
+}
+
+.modal-buttons a {
+    background: #25d366;
+}
+
+/* ========== FOOTER ========== */
+footer {
+    margin-top: 60px;
+    background: #162426;
+    color: #cfd8dc;
+    text-align: center;
+    padding: 22px 12px;
+    font-size: 0.9rem;
+}
+
+/* ========== MOBILE ========== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    .home-categories,
+    .images {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .category-card,
+    .images img {
+        height: 180px;
+    }
+
+    .card-label {
+        font-size: 1rem;
+    }
+}
+/* ========== DIVISION SECTIONS ========== */
+.division {
+    padding: 70px 20px;
+}
+
+/* Retail section look */
+.retail-section {
+    background: #f8fafb;
+}
+
+/* Stitching section look */
+.stitching-section {
+    background: #eef5f7;
+}
+
+/* Common services look */
+.common-section {
+    background: #ffffff;
+}
+
+.division h2 {
+    text-align: center;
+    font-size: 2.1rem;
+    margin-bottom: 35px;
+    color: #0f4c5c;
+}
+/* ===== MODAL SLIDER ===== */
+.slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.slide-btn {
+    background: rgba(0,0,0,0.6);
+    border: none;
+    color: white;
+    font-size: 28px;
+    padding: 8px 14px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slide-btn:hover {
+    background: rgba(0,0,0,0.85);
+}
+
+/* ===== DOT INDICATORS ===== */
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.active {
+    background: #25d366;
+    transform: scale(1.2);
+}
