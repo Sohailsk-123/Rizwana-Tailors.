@@ -17,20 +17,7 @@
    aria-label="Join WhatsApp Updates Group">
    👥
 </a>
-<!-- STYLE PREVIEW MODAL -->
-<div id="styleModal" class="modal">
-    <span class="close" onclick="closeStyleModal()">&times;</span>
 
-    <div style="text-align:center;">
-        <div id="styleIcon" style="font-size:4rem;margin-bottom:15px;"></div>
-        <p id="styleName" style="font-size:1.3rem;font-weight:600;"></p>
-    </div>
-
-    <div class="modal-buttons">
-        <a id="styleWhatsapp" target="_blank">💬 Send on WhatsApp</a>
-        <button onclick="closeStyleModal()">❌ Close</button>
-    </div>
-</div>
 <body>
 
 <!-- HEADER -->
@@ -165,6 +152,21 @@ function addToCart() {
     alert("Added to cart ✅");
 }
 </script>
+
+<!-- STYLE PREVIEW MODAL -->
+<div id="styleModal" class="modal">
+    <span class="close" onclick="closeStyleModal()">&times;</span>
+
+    <div style="text-align:center;">
+        <div id="styleIcon" style="font-size:4rem;margin-bottom:15px;"></div>
+        <p id="styleName" style="font-size:1.3rem;font-weight:600;"></p>
+    </div>
+
+    <div class="modal-buttons">
+        <a id="styleWhatsapp" target="_blank">💬 Send on WhatsApp</a>
+        <button onclick="closeStyleModal()">❌ Close</button>
+    </div>
+</div>
 
 <script>
 let selectedStyleName = "";
