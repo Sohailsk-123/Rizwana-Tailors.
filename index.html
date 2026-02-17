@@ -20,18 +20,27 @@
 <body>
 
 <!-- HEADER -->
-<header class="home-header">
+<header>
     <h1>Rizwana Ladies Tailor</h1>
     <p>Stitching & Ready-Made Dresses</p>
-    <a href="cart.html" class="btn" style="margin-left:10px;">🛒 Cart</a>
+    <p style="margin-top:6px;">🚚 Delivery Available Across India</p>
 
     <a class="whatsapp-main" href="https://wa.me/917075721372" target="_blank">
-        💬 WhatsApp Order
+        💬 Order on WhatsApp
     </a>
 </header>
-<!-- ================= RETAIL SECTION ================= -->
+
+<!-- SEARCH BAR -->
+<section style="padding-top:30px; padding-bottom:20px;">
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search blouse, saree, burqa, dress…">
+        <button onclick="searchProduct()">🔍</button>
+    </div>
+</section>
+
+<!-- RETAIL SECTION -->
 <section class="division retail-section">
-    <h2>🛍️ Ready-Made Items</h2>
+    <h2>🛍️ Ready-Made Dresses</h2>
 
     <div class="home-categories">
         <a href="sarees.html" class="category-card">
@@ -46,7 +55,7 @@
     </div>
 </section>
 
-<!-- ================= STITCHING SECTION ================= -->
+<!-- STITCHING SECTION -->
 <section class="division stitching-section">
     <h2>✂️ Stitching Services</h2>
 
@@ -57,36 +66,76 @@
         </a>
 
         <a href="dress-stitching.html" class="category-card">
-            <img src="images/home-frocks.jpg" alt="Dress-stitching">
-            <div class="card-label">Dress-stitching</div>
+            <img src="images/home-dress.jpg" alt="Dress Stitching">
+            <div class="card-label">Dress Stitching</div>
         </a>
     </div>
 </section>
 
-<!-- ================= COMMON SERVICES =================
-<section class="division common-section">
-    <h2>🧵 Lining, Falls & Finishing</h2>
-
-    <div class="home-categories">
-        <a href="lining-falls.html" class="category-card">
-            <img src="images/home-lining.jpg" alt="Lining & Falls">
-            <div class="card-label">Lining & Falls</div>
-        </a>
-    </div>
-</section> -->
-
-<!-- SIMPLE INFO STRIP -->
-<section class="info-strip">
-    <div>📏 Perfect Fit</div>
-    <div>🧵 Quality Work</div>
-    <div>⏰ On-Time Delivery</div>
+<!-- ABOUT SECTION -->
+<section class="about-section">
+    <h2>About Rizwana Ladies Tailor</h2>
+    <p>
+        Rizwana Ladies Tailor is a trusted tailoring and ladies wear shop
+        serving Kurichedu and customers across India.
+        We specialize in custom blouse stitching, dress stitching,
+        and ready-made sarees and burqas.
+    </p>
+    <p>
+        Every order is handled personally with care, proper fitting,
+        and clear communication on WhatsApp before stitching or delivery.
+    </p>
 </section>
 
-<!-- FOOTER -->
-<footer class="home-footer">
-    <p>📍 NSP Colony, Kurichedu, Ongole</p>
-    <p>📞 7075721372</p>
+<!-- CONTACT / ADDRESS -->
+<section class="contact-section">
+    <h2>Contact & Address</h2>
+    <p>
+        📍 <strong>Address:</strong><br>
+        N.S.P Colony, Vinukonda Road,<br>
+        Kurichedu – 523304
+    </p>
+    <p>
+        📞 <strong>Phone / WhatsApp:</strong><br>
+        +91 7075721372
+    </p>
+    <p>🚚 Delivery Available Across India</p>
+
+    <a class="btn" href="https://wa.me/917075721372" target="_blank">
+        📲 Contact on WhatsApp
+    </a>
+</section>
+
+<footer>
+    <p>© Rizwana Ladies Tailor • Kurichedu</p>
 </footer>
+
+<!-- SEARCH SCRIPT -->
+<script>
+function searchProduct() {
+    const q = document.getElementById("searchInput").value.toLowerCase();
+
+    if (!q) return;
+
+    if (q.includes("saree")) {
+        window.location.href = "sarees.html";
+    } else if (q.includes("burqa")) {
+        window.location.href = "burqas.html";
+    } else if (q.includes("blouse")) {
+        window.location.href = "blouse-stitching.html";
+    } else if (
+        q.includes("dress") ||
+        q.includes("frock") ||
+        q.includes("anarkali") ||
+        q.includes("chudidar") ||
+        q.includes("salwar")
+    ) {
+        window.location.href = "dress-stitching.html";
+    } else {
+        alert("Please search blouse, saree, burqa or dress");
+    }
+}
+</script>
 
 </body>
 </html>

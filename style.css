@@ -445,3 +445,53 @@ footer {
     width: 220px;
     text-align: center;
 }
+/* ===== SEARCH BAR ===== */
+.search-box {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    background: #ffffff;
+    border-radius: 40px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    overflow: hidden;
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    padding: 14px 18px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.search-box button {
+    background: #0f4c5c;
+    color: white;
+    border: none;
+    padding: 0 22px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* ABOUT */
+.about-section {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.about-section p {
+    margin-top: 12px;
+    font-size: 1.05rem;
+    color: #444;
+}
+
+/* CONTACT */
+.contact-section {
+    text-align: center;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    max-width: 900px;
+    margin: auto;
+}
