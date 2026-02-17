@@ -396,38 +396,33 @@ footer {
     }
 }
 /* ===== FLOATING WHATSAPP COMMUNITY BUTTON ===== */
+/* ===== FLOATING WHATSAPP COMMUNITY (SMALL) ===== */
 .whatsapp-community {
     position: fixed;
-    right: 18px;
-    bottom: 90px; /* stays above order WhatsApp button */
+    right: 16px;
+    bottom: 90px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 6px;
     background: #25d366;
     color: #ffffff;
-    padding: 12px 16px;
-    border-radius: 40px;
+    padding: 8px 12px;
+    border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.95rem;
-    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+    font-size: 0.8rem;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
     z-index: 1000;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.whatsapp-community:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 18px 35px rgba(0,0,0,0.35);
 }
 
 .whatsapp-community .wa-icon {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
 }
 
-/* Mobile optimization */
+/* Mobile */
 @media (max-width: 600px) {
     .whatsapp-community {
-        padding: 10px 14px;
-        font-size: 0.9rem;
+        padding: 7px 10px;
+        font-size: 0.75rem;
     }
 }
