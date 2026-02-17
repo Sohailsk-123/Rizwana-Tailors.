@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dress Stitching | Rizwana Ladies Tailor</title>
+
+    <meta name="description"
+          content="Custom dress stitching at Rizwana Ladies Tailor – long frocks, umbrella cut, chudidars, sharara, gharara, anarkali and salwar kameez.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <h1>✂️ Dress Stitching</h1>
+    <p>Choose Dress Type → Send Reference → Perfect Stitching</p>
+
+    <a class="whatsapp-main" href="https://wa.me/917075721372" target="_blank">
+        💬 WhatsApp Enquiry
+    </a>
+</header>
+
+<!-- SHORT INTRO -->
+<section style="text-align:center; padding-top:30px;">
+    <p style="font-size:1.05rem; max-width:850px; margin:auto;">
+        We stitch dresses as per your design, fitting and comfort.  
+        Select the dress type below and send your reference photo on WhatsApp.
+    </p>
+</section>
+
+<!-- ================= DRESS TYPES ================= -->
+<section>
+    <h2>👗 Dress Types</h2>
+
+    <div class="style-grid">
+
+        <div class="style-card" onclick="sendStyle('Long Frock Stitching')">
+            <div class="style-icon">👗</div>
+            <div class="style-name">Long Frock</div>
+        </div>
+
+        <div class="style-card" onclick="sendStyle('Umbrella Cut Frock Stitching')">
+            <div class="style-icon">☂️</div>
+            <div class="style-name">Umbrella Cut</div>
+        </div>
+
+        <div class="style-card" onclick="sendStyle('Chudidar Stitching')">
+            <div class="style-icon">👖</div>
+            <div class="style-name">Chudidar</div>
+        </div>
+
+        <div class="style-card" onclick="sendStyle('Sharara Stitching')">
+            <div class="style-icon">✨</div>
+            <div class="style-name">Sharara</div>
+        </div>
+
+        <div class="style-card" onclick="sendStyle('Gharara Stitching')">
+            <div class="style-icon">🌙</div>
+            <div class="style-name">Gharara</div>
+        </div>
+
+        <div class="style-card" onclick="sendStyle('Anarkali Stitching')">
+            <div class="style-icon">👑</div>
+            <div class="style-name">Anarkali</div>
+        </div>
+
+        <div class="style-card" onclick="sendStyle('Salwar Kameez Stitching')">
+            <div class="style-icon">🧵</div>
+            <div class="style-name">Salwar Kameez</div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= NOTE ================= -->
+<section style="text-align:center;">
+    <p style="max-width:900px; margin:auto; font-size:1rem; color:#555;">
+        📸 After selecting a dress type, please send your reference image,  
+        fabric details and measurements on WhatsApp.  
+        Price and delivery time will be confirmed before stitching starts.
+    </p>
+</section>
+
+<footer>
+    <p>📍 Kurichedu • 📞 7075721372</p>
+</footer>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+function sendStyle(styleName) {
+    const message = encodeURIComponent(
+        "Hello Rizwana,\n\n" +
+        "I want dress stitching for:\n" +
+        styleName +
+        "\n\nI will send my reference photo, fabric details and measurements.\n" +
+        "Please share the price and stitching time."
+    );
+
+    window.open(
+        "https://wa.me/917075721372?text=" + message,
+        "_blank"
+    );
+}
+</script>
+
+</body>
+</html>
