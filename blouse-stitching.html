@@ -15,9 +15,24 @@
    class="whatsapp-community"
    target="_blank"
    aria-label="Join WhatsApp Updates Group">
-    <span class="wa-icon">👥</span>
-    <span class="wa-text">Join Updates</span>
+   👥
+    
 </a>
+<!-- STYLE PREVIEW MODAL -->
+<div id="styleModal" class="modal">
+    <span class="close" onclick="closeStyleModal()">&times;</span>
+
+    <div style="text-align:center;">
+        <div id="styleIcon" style="font-size:4rem;margin-bottom:15px;"></div>
+        <p id="styleName" style="font-size:1.3rem;font-weight:600;"></p>
+    </div>
+
+    <div class="modal-buttons">
+        <a id="styleWhatsapp" target="_blank">💬 Send on WhatsApp</a>
+        <button onclick="closeStyleModal()">❌ Close</button>
+    </div>
+</div>
+
 
 <body>
 
@@ -45,32 +60,50 @@
     <h2>👗 Neck Designs</h2>
 
     <div class="style-grid">
-        <div class="style-card" onclick="sendStyle('Princess Cut Blouse')">
+        <div class="style-card" 
+             data-style="Princess Cut Blouse"
+             data-icon="👑"
+             onclick="sendStyle('Princess Cut Blouse')">
             <div class="style-icon">👑</div>
             <div class="style-name">Princess Cut</div>
         </div>
 
-        <div class="style-card" onclick="sendStyle('Jacket Style Blouse')">
+        <div class="style-card"
+             data-style="Jacket Style Blouse"
+             data-icon="🧥"
+             onclick="sendStyle('Jacket Style Blouse')">
             <div class="style-icon">🧥</div>
             <div class="style-name">Jacket Style</div>
         </div>
 
-        <div class="style-card" onclick="sendStyle('Halter Neck Blouse')">
+        <div class="style-card"
+              data-style="Halter Neck Blouse"
+              data-icon="🔺"      
+              onclick="sendStyle('Halter Neck Blouse')">
             <div class="style-icon">🔺</div>
             <div class="style-name">Halter Neck</div>
         </div>
 
-        <div class="style-card" onclick="sendStyle('Collar Neck Blouse')">
+        <div class="style-card" 
+             data-style="Collar Neck Blouse"
+             data-icon="👔"      
+             onclick="sendStyle('Collar Neck Blouse')">
             <div class="style-icon">👔</div>
             <div class="style-name">Collar Neck</div>
         </div>
 
-        <div class="style-card" onclick="sendStyle('Off-Shoulder Blouse')">
+        <div class="style-card" 
+             data-style="Off-Shoulder blouse"
+             data-icon="💃"      
+             onclick="sendStyle('Off-Shoulder Blouse')">
             <div class="style-icon">💃</div>
             <div class="style-name">Off-Shoulder</div>
         </div>
 
-        <div class="style-card" onclick="sendStyle('Key Hole Neck Blouse')">
+        <div class="style-card" 
+              data-style="Key Hole Neck Blouse"
+              data-icon="🔑"      
+              onclick="sendStyle('Key Hole Neck Blouse')">
             <div class="style-icon">🔑</div>
             <div class="style-name">Key Hole Neck</div>
         </div>
@@ -82,17 +115,26 @@
     <h2>👚 Sleeve Designs</h2>
 
     <div class="style-grid">
-        <div class="style-card" onclick="sendStyle('Puff Sleeve Blouse')">
+        <div class="style-card"
+             data-style="Puff Sleeve Blouse"
+             data-icon="☁️"  
+             onclick="sendStyle('Puff Sleeve Blouse')">
             <div class="style-icon">☁️</div>
             <div class="style-name">Puff Sleeve</div>
         </div>
 
-        <div class="style-card" onclick="sendStyle('Cap Sleeve Blouse')">
+        <div class="style-card" 
+              data-style="Cap Sleeve Blouse"
+              data-icon="🎩" 
+              onclick="sendStyle('Cap Sleeve Blouse')">
             <div class="style-icon">🎩</div>
             <div class="style-name">Cap Sleeve</div>
         </div>
 
-        <div class="style-card" onclick="sendStyle('Ruffle Sleeve Blouse')">
+        <div class="style-card" 
+             data-style="Ruffle Sleeve Blouse"
+             data-icon="🌸" 
+             onclick="sendStyle('Ruffle Sleeve Blouse')">
             <div class="style-icon">🌸</div>
             <div class="style-name">Ruffle Sleeve</div>
         </div>
@@ -148,6 +190,36 @@ function addToCart() {
 }
 </script>
 
+<script>
+let selectedStyleName = "";
+
+function openStyleModal(card) {
+    const style = card.dataset.style;
+    const icon = card.dataset.icon;
+
+    selectedStyleName = style;
+
+    document.getElementById("styleIcon").innerText = icon;
+    document.getElementById("styleName").innerText = style;
+
+    const message = encodeURIComponent(
+        "Hello Rizwana,\n\n" +
+        "I want stitching for this design:\n" +
+        style +
+        "\n\nI will send my reference photo and measurements.\n" +
+        "Please share the price and stitching time."
+    );
+
+    document.getElementById("styleWhatsapp").href =
+        "https://wa.me/917075721372?text=" + message;
+
+    document.getElementById("styleModal").style.display = "block";
+}
+
+function closeStyleModal() {
+    document.getElementById("styleModal").style.display = "none";
+}
+</script>
 
 </body>
 </html>
