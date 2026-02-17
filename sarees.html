@@ -173,13 +173,15 @@ function addToCart() {
             window.location.origin +
             window.location.pathname.replace(/index\.html$/, "") +
             "#" +
-            selectedDesignId
+            selectedDesignId,
+        image: document.getElementById("modalImage").src
     });
 
     localStorage.setItem("cart", JSON.stringify(cart));
     alert("Added to cart ✅");
 }
 </script>
+
 
 </body>
 </html>

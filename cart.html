@@ -39,19 +39,37 @@ if (cart.length === 0) {
     cartDiv.innerHTML = "<p style='text-align:center;'>Your cart is empty.</p>";
 } else {
     cart.forEach((item, index) => {
-        const div = document.createElement("div");
-        div.style.padding = "15px";
-        div.style.marginBottom = "15px";
-        div.style.background = "#fff";
-        div.style.borderRadius = "10px";
-        div.style.boxShadow = "0 8px 20px rgba(0,0,0,0.08)";
-        div.innerHTML = `
+    const div = document.createElement("div");
+    div.style.display = "flex";
+    div.style.alignItems = "center";
+    div.style.gap = "15px";
+    div.style.padding = "15px";
+    div.style.marginBottom = "15px";
+    div.style.background = "#ffffff";
+    div.style.borderRadius = "12px";
+    div.style.boxShadow = "0 8px 20px rgba(0,0,0,0.08)";
+
+    div.innerHTML = `
+        <img src="${item.image}" 
+             alt="${item.name}"
+             style="width:70px;height:70px;object-fit:cover;border-radius:10px;">
+
+        <div style="flex:1;">
             <strong>${item.name}</strong><br>
-            <a href="${item.link}" target="_blank">View Design</a><br><br>
-            <button onclick="removeItem(${index})">❌ Remove</button>
-        `;
-        cartDiv.appendChild(div);
-    });
+            <a href="${item.link}" target="_blank" style="font-size:0.9rem;">
+                View Design
+            </a>
+        </div>
+
+        <span onclick="removeItem(${index})"
+              style="font-size:22px;cursor:pointer;">
+            🗑️
+        </span>
+    `;
+
+    cartDiv.appendChild(div);
+});
+
 }
 
 function removeItem(index) {
