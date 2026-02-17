@@ -13,6 +13,7 @@
 <header>
     <h1>👗 Sarees</h1>
     <p>Ready-Made • Buy on WhatsApp</p>
+    <a href="cart.html" class="btn" style="margin-left:10px;">🛒 Cart</a>
 
     <a class="whatsapp-main" href="https://wa.me/917075721372" target="_blank">
         💬 Order on WhatsApp
@@ -68,9 +69,12 @@
     <p id="modalCaption"></p>
 
     <div class="modal-buttons">
+        <button onclick="addToCart()">🛒 Add to Cart</button>
+
         <a id="whatsappLink" target="_blank">💬 Buy on WhatsApp</a>
     </div>
 </div>
+
 
 <footer>
     <p>📍 Kurichedu • 📞 7075721372</p>
@@ -156,6 +160,24 @@ function updateDots() {
     document.querySelectorAll(".dot").forEach((dot, index) => {
         dot.classList.toggle("active", index === currentIndex);
     });
+}
+
+</script>
+<script>
+function addToCart() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({
+        name: selectedDesignName,
+        link:
+            window.location.origin +
+            window.location.pathname.replace(/index\.html$/, "") +
+            "#" +
+            selectedDesignId
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Added to cart ✅");
 }
 </script>
 

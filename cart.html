@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart | Rizwana Ladies Tailor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>🛒 Your Cart</h1>
+    <p>Selected Items</p>
+    <p>🚚 Delivery Available Across India</p>
+</header>
+
+<section>
+    <div id="cartItems" style="max-width:900px;margin:auto;"></div>
+      
+    <div style="text-align:center;margin-top:30px;">
+        <button class="btn" onclick="sendCart()">💬 Send Cart on WhatsApp</button>
+        
+    </div>
+    <div style="text-align:center; margin-top:20px;">
+    <a href="index.html" class="btn">🏠 Back to Home</a>
+</div>
+
+</section>
+
+<footer>
+    <p>📞 7075721372 • Rizwana Ladies Tailor</p>
+</footer>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const cartDiv = document.getElementById("cartItems");
+
+if (cart.length === 0) {
+    cartDiv.innerHTML = "<p style='text-align:center;'>Your cart is empty.</p>";
+} else {
+    cart.forEach((item, index) => {
+        const div = document.createElement("div");
+        div.style.padding = "15px";
+        div.style.marginBottom = "15px";
+        div.style.background = "#fff";
+        div.style.borderRadius = "10px";
+        div.style.boxShadow = "0 8px 20px rgba(0,0,0,0.08)";
+        div.innerHTML = `
+            <strong>${item.name}</strong><br>
+            <a href="${item.link}" target="_blank">View Design</a><br><br>
+            <button onclick="removeItem(${index})">❌ Remove</button>
+        `;
+        cartDiv.appendChild(div);
+    });
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    location.reload();
+}
+
+function sendCart() {
+    if (cart.length === 0) return;
+
+    let message = "Hello Rizwana,%0A%0AI want to order the following items:%0A%0A";
+
+    cart.forEach((item, i) => {
+        message += `${i + 1}. ${item.name}%0A${item.link}%0A%0A`;
+    });
+
+    message += "🚚 Delivery required (Across India).";
+
+    window.open(
+        "https://wa.me/917075721372?text=" + message,
+        "_blank"
+    );
+}
+</script>
+
+</body>
+</html>
