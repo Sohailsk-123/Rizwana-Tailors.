@@ -571,3 +571,106 @@ footer {
     cursor: pointer;
     padding: 0 15px;
 }
+/* ===== MODAL FIX FOR VERTICAL IMAGES ===== */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 999;
+    overflow-y: auto;
+}
+
+/* Modal box */
+.modal-box {
+    background: #ffffff;
+    max-width: 420px;
+    margin: 40px auto;
+    padding: 16px;
+    border-radius: 18px;
+}
+
+/* Image container */
+.modal-image-wrapper {
+    width: 100%;
+    max-height: 55vh;          /* KEY FIX */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Image itself */
+.modal-image-wrapper img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;       /* NO CROPPING */
+    border-radius: 12px;
+}
+
+/* Slider arrows */
+.slider-controls {
+    display: flex;
+    justify-content: space-between;
+    font-size: 2rem;
+    margin: 8px 10px;
+    user-select: none;
+}
+
+.slider-controls span {
+    cursor: pointer;
+    color: #333;
+}
+
+/* Dots */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.slider-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ccc;
+}
+
+.slider-dots span.active {
+    background: #0f4c5c;
+}
+
+/* Caption */
+#modalCaption {
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+/* Buttons */
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.modal-buttons button,
+.modal-buttons a {
+    width: 100%;
+    padding: 12px;
+    border-radius: 30px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Close button */
+.close {
+    position: fixed;
+    top: 14px;
+    right: 18px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}

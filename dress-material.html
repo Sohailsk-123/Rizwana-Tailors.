@@ -75,26 +75,33 @@
 <div id="imageModal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
 
-    <img id="modalImage" class="modal-content">
-    <!-- SLIDER CONTROLS -->
-<div class="slider-controls">
-    <span onclick="prevImage()">⟨</span>
-    <span onclick="nextImage()">⟩</span>
-</div>
-    <p id="modalCaption"></p>
+    <div class="modal-box">
 
-    <div class="modal-buttons">
-        <button onclick="addToCart()">🛒 Add to Cart</button>
-        <a id="whatsappLink" target="_blank">
-            💬 Send Reference on WhatsApp
-        </a>
+        <!-- IMAGE AREA -->
+        <div class="modal-image-wrapper">
+            <img id="modalImage" alt="">
+        </div>
+
+        <!-- SLIDER CONTROLS -->
+        <div class="slider-controls">
+            <span onclick="prevImage()">⟨</span>
+            <span onclick="nextImage()">⟩</span>
+        </div>
+
+        <!-- DOTS -->
+        <div id="sliderDots" class="slider-dots"></div>
+
+        <!-- CAPTION -->
+        <p id="modalCaption"></p>
+
+        <!-- ACTION BUTTONS -->
+        <div class="modal-buttons">
+            <button onclick="addToCart()">🛒 Add to Cart</button>
+            <a id="whatsappLink" target="_blank">💬 Send Reference</a>
+        </div>
+
     </div>
 </div>
-
-<footer>
-    <p>📍 N.S.P Colony, Vinukonda Road, Kurichedu – 523304</p>
-    <p>📞 +91 7075721372</p>
-</footer>
 
 <!-- ================= SCRIPT ================= -->
 <script>
@@ -133,6 +140,22 @@ function openModal(img) {
         "https://wa.me/917075721372?text=" + message;
 
     window.location.hash = selectedDesignId;
+}
+function renderDots() {
+    const dots = document.getElementById("sliderDots");
+    dots.innerHTML = "";
+
+    imagesList.forEach((_, i) => {
+        const dot = document.createElement("span");
+        if (i === currentIndex) dot.classList.add("active");
+        dot.onclick = () => {
+            currentIndex = i;
+            document.getElementById("modalImage").src =
+                imagesList[currentIndex].trim();
+            renderDots();
+        };
+        dots.appendChild(dot);
+    });
 }
 
 function closeModal() {
