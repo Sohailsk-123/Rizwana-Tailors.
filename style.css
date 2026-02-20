@@ -674,3 +674,13 @@ footer {
     color: white;
     cursor: pointer;
 }
+/* ===== MODAL CAPTION FIX ===== */
+#modalCaption {
+    margin-top: 12px;
+    margin-bottom: 8px;
+    text-align: center;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #2f3e46;   /* DARK, ALWAYS VISIBLE */
+    line-height: 1.4;
+}
