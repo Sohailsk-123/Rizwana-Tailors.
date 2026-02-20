@@ -76,6 +76,11 @@
     <span class="close" onclick="closeModal()">&times;</span>
 
     <img id="modalImage" class="modal-content">
+    <!-- SLIDER CONTROLS -->
+<div class="slider-controls">
+    <span onclick="prevImage()">⟨</span>
+    <span onclick="nextImage()">⟩</span>
+</div>
     <p id="modalCaption"></p>
 
     <div class="modal-buttons">
@@ -164,6 +169,20 @@ window.onload = function () {
         }
     });
 };
+function nextImage() {
+    if (!imagesList.length) return;
+    currentIndex = (currentIndex + 1) % imagesList.length;
+    document.getElementById("modalImage").src =
+        imagesList[currentIndex].trim();
+}
+
+function prevImage() {
+    if (!imagesList.length) return;
+    currentIndex =
+        (currentIndex - 1 + imagesList.length) % imagesList.length;
+    document.getElementById("modalImage").src =
+        imagesList[currentIndex].trim();
+}
 </script>
 
 </body>

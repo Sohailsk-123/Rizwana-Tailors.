@@ -548,3 +548,26 @@ footer {
         transform: translateX(-100%);
     }
 }
+/* ===== MODAL IMAGE FULL VIEW ===== */
+.modal-content {
+    width: auto;
+    max-width: 95%;
+    max-height: 80vh;
+    object-fit: contain; /* SHOW FULL IMAGE */
+    background: #fff;
+}
+/* ===== MODAL SLIDER CONTROLS ===== */
+.slider-controls {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 10px auto 0;
+    color: white;
+    font-size: 2.2rem;
+    user-select: none;
+}
+
+.slider-controls span {
+    cursor: pointer;
+    padding: 0 15px;
+}
