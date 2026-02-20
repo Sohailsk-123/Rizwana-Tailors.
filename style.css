@@ -684,3 +684,48 @@ footer {
     color: #2f3e46;   /* DARK, ALWAYS VISIBLE */
     line-height: 1.4;
 }
+/* ===== PRODUCT GRID CARD (FINAL FIX) ===== */
+.product-card {
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.25s ease;
+    display: flex;
+    flex-direction: column;   /* 🔑 ENSURES TEXT IS BELOW IMAGE */
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Product image */
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Text area */
+.product-info {
+    padding: 10px 12px 14px;
+    text-align: center;
+    background: #ffffff;
+}
+
+/* Name */
+.product-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2f3e46;
+    margin-bottom: 4px;
+}
+
+/* Price */
+.product-price {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #0f4c5c;
+}
