@@ -799,3 +799,91 @@ footer {
         height: 200px;
     }
 }
+/* ===== ABOUT MODERN ===== */
+.about-modern {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #f0f6f8, #ffffff);
+}
+
+.about-card {
+    max-width: 900px;
+    margin: auto;
+    background: linear-gradient(135deg, #0f4c5c, #1b6f82);
+    color: #ffffff;
+    padding: 35px 30px;
+    border-radius: 22px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.about-card h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.about-highlight {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.about-card p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.about-badges {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.about-badges span {
+    background: rgba(255,255,255,0.15);
+    padding: 10px 16px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+}
+/* ===== CONTACT MODERN ===== */
+.contact-modern {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #eef3f5, #ffffff);
+}
+
+.contact-card {
+    max-width: 850px;
+    margin: auto;
+    background: linear-gradient(135deg, #ffffff, #f7fafb);
+    padding: 35px 30px;
+    border-radius: 22px;
+    box-shadow: 0 18px 35px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.contact-card h2 {
+    color: #0f4c5c;
+    margin-bottom: 25px;
+}
+
+.contact-item {
+    font-size: 1.05rem;
+    margin-bottom: 18px;
+    line-height: 1.6;
+    color: #2f3e46;
+}
+
+.contact-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 34px;
+    background: #25d366;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
