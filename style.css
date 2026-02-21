@@ -1341,3 +1341,55 @@ header .btn {
         font-size: 2rem;
     }
 }
+/* ===== CATEGORY LABEL REFINEMENT ===== */
+
+.card-label {
+    padding: 8px 12px;              /* smaller height */
+    font-size: 0.95rem;             /* smaller text */
+    letter-spacing: 0.4px;
+    border-radius: 18px;            /* softer pill */
+    background: linear-gradient(
+        135deg,
+        var(--sage),
+        var(--sage-dark)
+    );
+}
+
+/* Mobile fine-tune */
+@media (max-width: 600px) {
+    .card-label {
+        font-size: 0.85rem;
+        padding: 7px 10px;
+    }
+}
+/* ===== ABOUT SECTION COLOR REVERSE ===== */
+
+.about-modern {
+    background: linear-gradient(
+        135deg,
+        var(--sage),
+        var(--sage-dark)
+    );
+}
+
+.about-card {
+    background: var(--paper);       /* light card */
+    color: var(--ink);              /* dark readable text */
+}
+
+/* Headings inside about */
+.about-card h2 {
+    color: var(--olive);
+}
+
+/* Paragraph text */
+.about-card p {
+    color: var(--ink);
+}
+
+/* Badges reversed */
+.about-badges span {
+    background: rgba(95, 111, 85, 0.15);
+    color: var(--olive);
+    border: 1px solid rgba(95, 111, 85, 0.25);
+}
