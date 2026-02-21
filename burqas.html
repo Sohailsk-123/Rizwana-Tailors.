@@ -169,6 +169,11 @@
     </div>
 </div>
 
+<footer>
+    <p>© Rizwana Ladies Tailor • Kurichedu</p>
+    <P> Phone: +91 7075727312</P>
+</footer>
+
 <!-- ================= SCRIPT ================= -->
 <script>
 let selectedDesignId = "";
@@ -208,7 +213,7 @@ function openModal(card) {
         );
 
     renderDots();
-    window.location.hash = selectedDesignId;
+    history.replaceState(null, "", "#" + selectedDesignId);
 }
 
 function nextImage() {
@@ -242,7 +247,7 @@ function renderDots() {
 
 function closeModal() {
     document.getElementById("imageModal").style.display = "none";
-    history.pushState("", document.title, window.location.pathname);
+    history.replaceState(null, "", window.location.pathname);
 }
 
 function addToCart() {

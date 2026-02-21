@@ -223,7 +223,8 @@
 </div>
 
 <footer>
-    <p>📍 Kurichedu • 📞 7075721372</p>
+    <p>© Rizwana Ladies Tailor • Kurichedu</p>
+    <P> Phone: +91 7075727312</P>
 </footer>
 
 <script>
@@ -266,13 +267,13 @@ function openModal(card) {
         );
 
     renderDots();
-    window.location.hash = selectedDesignId;
+    history.replaceState(null, "", "#" + selectedDesignId);
 }
 
 /* ===== CLOSE MODAL ===== */
 function closeModal() {
     document.getElementById("imageModal").style.display = "none";
-    history.pushState("", document.title, window.location.pathname);
+    history.replaceState(null, "", window.location.pathname);
 }
 
 /* ===== SLIDER FUNCTIONS ===== */

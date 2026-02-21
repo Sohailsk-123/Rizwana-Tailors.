@@ -12,6 +12,12 @@
 </head>
 <body>
 
+<!-- FLOATING WHATSAPP COMMUNITY BUTTON -->
+<a href="https://chat.whatsapp.com/CRb8GspLDOZ0eOq4Hhk2Tu"
+   class="whatsapp-community"
+   target="_blank"
+   aria-label="Join WhatsApp Updates Group">👥</a>
+
 <!-- HEADER -->
 <header>
     <h1>Dress Materials</h1>
@@ -256,6 +262,11 @@
     </div>
 </div>
 
+<footer>
+    <p>© Rizwana Ladies Tailor • Kurichedu</p>
+    <P> Phone: +91 7075727312</P>
+</footer>
+
 <!-- ================= SCRIPT ================= -->
 <script>
 let selectedDesignId = "";
@@ -292,7 +303,7 @@ function openModal(img) {
     document.getElementById("whatsappLink").href =
         "https://wa.me/917075721372?text=" + message;
 
-    window.location.hash = selectedDesignId;
+    history.replaceState(null, "", "#" + selectedDesignId);
 }
 function renderDots() {
     const dots = document.getElementById("sliderDots");
@@ -313,7 +324,7 @@ function renderDots() {
 
 function closeModal() {
     document.getElementById("imageModal").style.display = "none";
-    history.pushState("", document.title, window.location.pathname);
+    history.replaceState(null, "", window.location.pathname);
 }
 
 function addToCart() {
