@@ -227,64 +227,59 @@
 </footer>
 
 <script>
-let imagesList = [];
-let currentIndex = 0;
 let selectedDesignId = "";
 let selectedDesignName = "";
+let selectedDesignPrice = "";
+let imagesList = [];
+let currentIndex = 0;
 
-function openModal(img) {
-    imagesList = img.dataset.images.split(",");
+function openModal(element) {
+
+    selectedDesignId = element.dataset.id;
+    selectedDesignName = element.dataset.name || element.alt || "";
+    selectedDesignPrice = element.dataset.price || "";
+
+    imagesList = element.dataset.images.split(",");
     currentIndex = 0;
 
-    selectedDesignId = img.dataset.id;
-    selectedDesignName = img.alt;
+    document.getElementById("modalImage").src = imagesList[0].trim();
 
+    // ✅ SHOW NAME + PRICE
+    let captionText = selectedDesignName;
+    if (selectedDesignPrice) {
+        captionText += " • " + selectedDesignPrice;
+    }
+
+    document.getElementById("modalCaption").textContent = captionText;
     document.getElementById("imageModal").style.display = "block";
-    document.getElementById("modalImage").src = imagesList[currentIndex];
-    document.getElementById("modalCaption").innerText = img.alt;
-
-    createDots();
 
     const productLink =
         window.location.origin +
-        window.location.pathname.replace(/index\.html$/, "") +
+        window.location.pathname +
         "#" +
         selectedDesignId;
 
     const message = encodeURIComponent(
         "Hello Rizwana,\n\n" +
-        "I want to buy this item:\n" +
+        "I am interested in this product:\n" +
         selectedDesignName +
-        "\n\nReference:\n" +
+        "\n\nReference link:\n" +
         productLink
     );
 
     document.getElementById("whatsappLink").href =
         "https://wa.me/917075721372?text=" + message;
-}
 
-function nextImage() {
-    if (currentIndex < imagesList.length - 1) {
-        currentIndex++;
-        updateSlider();
+    if (typeof renderDots === "function") {
+        renderDots();
     }
-}
-
-function prevImage() {
-    if (currentIndex > 0) {
-        currentIndex--;
-        updateSlider();
-    }
-}
-
-function updateSlider() {
-    document.getElementById("modalImage").src = imagesList[currentIndex];
-    updateDots();
 }
 
 function closeModal() {
     document.getElementById("imageModal").style.display = "none";
+    history.pushState("", document.title, window.location.pathname);
 }
+</script>
 
 /* ===== DOTS ===== */
 function createDots() {
