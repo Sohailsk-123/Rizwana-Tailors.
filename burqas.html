@@ -176,85 +176,41 @@
 </footer>
 
 <script>
-let imagesList = [];
-let currentIndex = 0;
 let selectedDesignId = "";
 let selectedDesignName = "";
+let imagesList = [];
+let currentIndex = 0;
 
 function openModal(img) {
+    selectedDesignId = img.dataset.id;          // INTERNAL CODE
+    selectedDesignName = img.dataset.name;      // DISPLAY NAME
+
     imagesList = img.dataset.images.split(",");
     currentIndex = 0;
 
-    selectedDesignId = img.dataset.id;
-    selectedDesignName = img.alt;
-
+    document.getElementById("modalImage").src = imagesList[0].trim();
+    document.getElementById("modalCaption").innerText = selectedDesignName;
     document.getElementById("imageModal").style.display = "block";
-    document.getElementById("modalImage").src = imagesList[currentIndex];
-    document.getElementById("modalCaption").innerText = img.alt;
-
-    createDots();
 
     const productLink =
         window.location.origin +
-        window.location.pathname.replace(/index\.html$/, "") +
+        window.location.pathname +
         "#" +
         selectedDesignId;
 
     const message = encodeURIComponent(
         "Hello Rizwana,\n\n" +
-        "I want to buy this item:\n" +
+        "I am interested in this dress material:\n" +
         selectedDesignName +
-        "\n\nReference:\n" +
-        productLink
+        "\n\nReference link:\n" +
+        productLink +
+        "\n\nPlease share the price and availability."
     );
 
     document.getElementById("whatsappLink").href =
         "https://wa.me/917075721372?text=" + message;
-}
 
-function nextImage() {
-    if (currentIndex < imagesList.length - 1) {
-        currentIndex++;
-        updateSlider();
-    }
-}
-
-function prevImage() {
-    if (currentIndex > 0) {
-        currentIndex--;
-        updateSlider();
-    }
-}
-
-function updateSlider() {
-    document.getElementById("modalImage").src = imagesList[currentIndex];
-    updateDots();
-}
-
-function closeModal() {
-    document.getElementById("imageModal").style.display = "none";
-}
-
-/* ===== DOTS ===== */
-function createDots() {
-    const dotsContainer = document.getElementById("dotsContainer");
-    dotsContainer.innerHTML = "";
-
-    imagesList.forEach((_, index) => {
-        const dot = document.createElement("span");
-        dot.className = "dot" + (index === 0 ? " active" : "");
-        dot.onclick = () => {
-            currentIndex = index;
-            updateSlider();
-        };
-        dotsContainer.appendChild(dot);
-    });
-}
-
-function updateDots() {
-    document.querySelectorAll(".dot").forEach((dot, index) => {
-        dot.classList.toggle("active", index === currentIndex);
-    });
+    window.location.hash = selectedDesignId;
 }
 function renderDots() {
     const dots = document.getElementById("sliderDots");
@@ -272,16 +228,21 @@ function renderDots() {
         dots.appendChild(dot);
     });
 }
-</script>
-<script>
+
+function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+    history.pushState("", document.title, window.location.pathname);
+}
+
 function addToCart() {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     cart.push({
         name: selectedDesignName,
+        code: selectedDesignId,
         link:
             window.location.origin +
-            window.location.pathname.replace(/index\.html$/, "") +
+            window.location.pathname +
             "#" +
             selectedDesignId,
         image: document.getElementById("modalImage").src
@@ -290,7 +251,32 @@ function addToCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
     alert("Added to cart ✅");
 }
-</script>
 
+/* AUTO-OPEN PRODUCT FROM LINK */
+window.onload = function () {
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) return;
+
+    document.querySelectorAll(".gallery img").forEach(img => {
+        if (img.dataset.id === hash) {
+            openModal(img);
+        }
+    });
+};
+function nextImage() {
+    if (!imagesList.length) return;
+    currentIndex = (currentIndex + 1) % imagesList.length;
+    document.getElementById("modalImage").src =
+        imagesList[currentIndex].trim();
+}
+
+function prevImage() {
+    if (!imagesList.length) return;
+    currentIndex =
+        (currentIndex - 1 + imagesList.length) % imagesList.length;
+    document.getElementById("modalImage").src =
+        imagesList[currentIndex].trim();
+}
+</script>
 </body>
 </html>
