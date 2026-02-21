@@ -178,40 +178,59 @@
 <script>
 let selectedDesignId = "";
 let selectedDesignName = "";
+let selectedDesignPrice = "";
 let imagesList = [];
 let currentIndex = 0;
 
-function openModal(img) {
-    selectedDesignId = img.dataset.id;          // INTERNAL CODE
-    selectedDesignName = img.dataset.name;      // DISPLAY NAME
+function openModal(card) {
 
-    imagesList = img.dataset.images.split(",");
+    // 1️⃣ Read data from product-card
+    selectedDesignId = card.dataset.id;
+    selectedDesignName = card.dataset.name || "";
+    selectedDesignPrice = card.dataset.price || "";
+
+    // 2️⃣ Prepare images for slider
+    imagesList = card.dataset.images.split(",").map(i => i.trim());
     currentIndex = 0;
 
-    document.getElementById("modalImage").src = imagesList[0].trim();
-    document.getElementById("modalCaption").innerText = selectedDesignName;
+    // 3️⃣ Show first image
+    document.getElementById("modalImage").src = imagesList[currentIndex];
+
+    // 4️⃣ Show name + price
+    let caption = selectedDesignName;
+    if (selectedDesignPrice) {
+        caption += " • " + selectedDesignPrice;
+    }
+    document.getElementById("modalCaption").textContent = caption;
+
+    // 5️⃣ Open modal
     document.getElementById("imageModal").style.display = "block";
 
+    // 6️⃣ WhatsApp link
     const productLink =
         window.location.origin +
         window.location.pathname +
         "#" +
         selectedDesignId;
 
-    const message = encodeURIComponent(
-        "Hello Rizwana,\n\n" +
-        "I am interested in this dress material:\n" +
-        selectedDesignName +
-        "\n\nReference link:\n" +
-        productLink +
-        "\n\nPlease share the price and availability."
-    );
-
     document.getElementById("whatsappLink").href =
-        "https://wa.me/917075721372?text=" + message;
+        "https://wa.me/917075721372?text=" +
+        encodeURIComponent(
+            "Hello Rizwana,\n\n" +
+            "I am interested in this product:\n" +
+            selectedDesignName +
+            (selectedDesignPrice ? "\nPrice: " + selectedDesignPrice : "") +
+            "\n\nReference link:\n" +
+            productLink
+        );
 
+    // 7️⃣ Slider dots
+    renderDots();
+
+    // 8️⃣ Update URL
     window.location.hash = selectedDesignId;
 }
+
 function renderDots() {
     const dots = document.getElementById("sliderDots");
     dots.innerHTML = "";
