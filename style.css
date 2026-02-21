@@ -729,3 +729,23 @@ footer {
     font-weight: 700;
     color: #0f4c5c;
 }
+/* ===== PRODUCT GRID FIX (SIDE BY SIDE) ===== */
+.images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 per row desktop */
+    gap: 16px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .images {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .images {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

@@ -131,16 +131,37 @@
 
 <!-- SEARCH SCRIPT -->
 <script>
-const products = [
-    { name: "Sarees", link: "sarees.html" },
-    { name: "Burqas", link: "burqas.html" },
-    { name: "Blouse Stitching", link: "blouse-stitching.html" },
-    { name: "Dress Stitching", link: "dress-stitching.html" },
-    { name: "Anarkali", link: "dress-stitching.html" },
-    { name: "Chudidar", link: "dress-stitching.html" },
-    { name: "Salwar Kameez", link: "dress-stitching.html" }
-];
+let allProducts = [];
 
+/* Load products from retail pages */
+async function loadProducts() {
+    const pages = [
+        "dress-material.html",
+        "sarees.html",
+        "burqas.html"
+    ];
+
+    for (let page of pages) {
+        try {
+            const res = await fetch(page);
+            const text = await res.text();
+            const doc = new DOMParser().parseFromString(text, "text/html");
+
+            doc.querySelectorAll(".product-card").forEach(card => {
+                allProducts.push({
+                    name: card.dataset.name,
+                    link: page + "#" + card.dataset.id
+                });
+            });
+        } catch (e) {
+            console.warn("Could not load", page);
+        }
+    }
+}
+
+loadProducts();
+
+/* SEARCH */
 function showSuggestions() {
     const input = document.getElementById("searchInput").value.toLowerCase();
     const box = document.getElementById("searchSuggestions");
@@ -148,7 +169,7 @@ function showSuggestions() {
 
     if (!input) return;
 
-    products.forEach(p => {
+    allProducts.forEach(p => {
         if (p.name.toLowerCase().includes(input)) {
             const div = document.createElement("div");
             div.innerText = p.name;
@@ -160,15 +181,17 @@ function showSuggestions() {
 
 function searchProduct() {
     const input = document.getElementById("searchInput").value.toLowerCase();
-    const found = products.find(p => p.name.toLowerCase().includes(input));
+    const found = allProducts.find(p =>
+        p.name.toLowerCase().includes(input)
+    );
+
     if (found) {
         window.location.href = found.link;
     } else {
-        alert("Please select from suggestions");
+        alert("Please choose from suggestions");
     }
 }
 </script>
-
 
 </body>
 </html>
