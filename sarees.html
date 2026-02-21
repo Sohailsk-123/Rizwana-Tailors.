@@ -227,30 +227,26 @@
 </footer>
 
 <script>
+/* ===== GLOBAL VARIABLES ===== */
 let selectedDesignId = "";
 let selectedDesignName = "";
 let selectedDesignPrice = "";
 let imagesList = [];
 let currentIndex = 0;
 
-function openModal(element) {
+/* ===== OPEN MODAL ===== */
+function openModal(card) {
+    selectedDesignId = card.dataset.id;
+    selectedDesignName = card.dataset.name || "";
+    selectedDesignPrice = card.dataset.price || "";
 
-    selectedDesignId = element.dataset.id;
-    selectedDesignName = element.dataset.name || element.alt || "";
-    selectedDesignPrice = element.dataset.price || "";
-
-    imagesList = element.dataset.images.split(",");
+    imagesList = card.dataset.images.split(",").map(i => i.trim());
     currentIndex = 0;
 
-    document.getElementById("modalImage").src = imagesList[0].trim();
+    document.getElementById("modalImage").src = imagesList[currentIndex];
+    document.getElementById("modalCaption").textContent =
+        selectedDesignName + (selectedDesignPrice ? " • " + selectedDesignPrice : "");
 
-    // ✅ SHOW NAME + PRICE
-    let captionText = selectedDesignName;
-    if (selectedDesignPrice) {
-        captionText += " • " + selectedDesignPrice;
-    }
-
-    document.getElementById("modalCaption").textContent = captionText;
     document.getElementById("imageModal").style.display = "block";
 
     const productLink =
@@ -259,48 +255,44 @@ function openModal(element) {
         "#" +
         selectedDesignId;
 
-    const message = encodeURIComponent(
-        "Hello Rizwana,\n\n" +
-        "I am interested in this product:\n" +
-        selectedDesignName +
-        "\n\nReference link:\n" +
-        productLink
-    );
-
     document.getElementById("whatsappLink").href =
-        "https://wa.me/917075721372?text=" + message;
+        "https://wa.me/917075721372?text=" +
+        encodeURIComponent(
+            "Hello Rizwana,\n\n" +
+            "I am interested in this product:\n" +
+            selectedDesignName +
+            "\n\nReference link:\n" +
+            productLink
+        );
 
-    if (typeof renderDots === "function") {
-        renderDots();
-    }
+    renderDots();
+    window.location.hash = selectedDesignId;
 }
 
+/* ===== CLOSE MODAL ===== */
 function closeModal() {
     document.getElementById("imageModal").style.display = "none";
     history.pushState("", document.title, window.location.pathname);
 }
 
+/* ===== SLIDER FUNCTIONS ===== */
+function nextImage() {
+    if (imagesList.length <= 1) return;
+
+    currentIndex = (currentIndex + 1) % imagesList.length;
+    document.getElementById("modalImage").src = imagesList[currentIndex];
+    renderDots();
+}
+
+function prevImage() {
+    if (imagesList.length <= 1) return;
+
+    currentIndex = (currentIndex - 1 + imagesList.length) % imagesList.length;
+    document.getElementById("modalImage").src = imagesList[currentIndex];
+    renderDots();
+}
+
 /* ===== DOTS ===== */
-function createDots() {
-    const dotsContainer = document.getElementById("dotsContainer");
-    dotsContainer.innerHTML = "";
-
-    imagesList.forEach((_, index) => {
-        const dot = document.createElement("span");
-        dot.className = "dot" + (index === 0 ? " active" : "");
-        dot.onclick = () => {
-            currentIndex = index;
-            updateSlider();
-        };
-        dotsContainer.appendChild(dot);
-    });
-}
-
-function updateDots() {
-    document.querySelectorAll(".dot").forEach((dot, index) => {
-        dot.classList.toggle("active", index === currentIndex);
-    });
-}
 function renderDots() {
     const dots = document.getElementById("sliderDots");
     dots.innerHTML = "";
@@ -308,35 +300,29 @@ function renderDots() {
     imagesList.forEach((_, i) => {
         const dot = document.createElement("span");
         if (i === currentIndex) dot.classList.add("active");
+
         dot.onclick = () => {
             currentIndex = i;
-            document.getElementById("modalImage").src =
-                imagesList[currentIndex].trim();
+            document.getElementById("modalImage").src = imagesList[currentIndex];
             renderDots();
         };
+
         dots.appendChild(dot);
     });
 }
-</script>
-<script>
-function addToCart() {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    cart.push({
-        name: selectedDesignName,
-        link:
-            window.location.origin +
-            window.location.pathname.replace(/index\.html$/, "") +
-            "#" +
-            selectedDesignId,
-        image: document.getElementById("modalImage").src
+/* ===== AUTO OPEN FROM LINK ===== */
+window.onload = function () {
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) return;
+
+    document.querySelectorAll(".product-card").forEach(card => {
+        if (card.dataset.id === hash) {
+            openModal(card);
+        }
     });
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-    alert("Added to cart ✅");
-}
+};
 </script>
-
 
 </body>
 </html>
