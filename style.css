@@ -196,84 +196,77 @@ a:hover {
     color: var(--sage-dark);
 }
 /* =====================================================
-   HOME HERO IMAGE (COTTAGECORE STYLE)
+   HERO SECTION – COTTAGECORE (VARIABLE BASED)
    ===================================================== */
 
 header {
     position: relative;
     background:
         linear-gradient(
-            rgba(246, 242, 236, 0.85),
-            rgba(246, 242, 236, 0.85)
+            rgba(246, 242, 236, 0.88),   /* linen overlay */
+            rgba(246, 242, 236, 0.88)
         ),
         url("images/hero/hero-cottage.jpg") center / cover no-repeat;
 
-    padding: 90px 20px 100px;
+    padding: 90px 20px 110px;
     text-align: center;
     border-bottom: 6px solid var(--sage);
 }
 
+/* Soft fabric-like edge */
+header::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 28px;
+    background: linear-gradient(
+        to bottom,
+        rgba(246, 242, 236, 0),
+        var(--linen)
+    );
+}
+
+/* Hero Title */
 header h1 {
     font-family: "Playfair Display", serif;
-    font-size: 2.6rem;
+    font-size: 2.7rem;
+    font-weight: 600;
     color: var(--olive);
     margin-bottom: 12px;
 }
 
+/* Hero Subtitle */
 header p {
     font-size: 1.1rem;
-    color: #5f6f55;
-    max-width: 700px;
+    color: var(--ink);
+    max-width: 720px;
     margin: auto;
+    opacity: 0.9;
 }
 
-/* Buttons inside hero */
+/* Hero Buttons */
 header .btn {
     margin-top: 22px;
+    background: linear-gradient(
+        135deg,
+        var(--sage),
+        var(--sage-dark)
+    );
 }
 
-/* Mobile hero adjustment */
+/* Mobile Hero */
 @media (max-width: 600px) {
     header {
-        padding: 70px 15px 80px;
+        padding: 70px 15px 85px;
     }
 
     header h1 {
         font-size: 2rem;
     }
-}
-/* =====================================================
-   HOME CATEGORIES – COTTAGECORE ACCENTS
-   ===================================================== */
 
-.home-categories {
-    background: linear-gradient(135deg, var(--paper), var(--linen));
-    padding: 60px 20px;
-}
-
-.category-card {
-    background: var(--paper);
-    border-radius: 26px;
-    box-shadow: 0 14px 35px rgba(0,0,0,0.12);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.category-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 22px 45px rgba(0,0,0,0.18);
-}
-
-.category-card img {
-    border-radius: 22px 22px 0 0;
-}
-
-/* Label like fabric tag */
-.card-label {
-    background: linear-gradient(135deg, var(--sage), var(--sage-dark));
-    color: #ffffff;
-    font-family: "Playfair Display", serif;
-    letter-spacing: 0.5px;
-    padding: 12px;
-    font-size: 1.05rem;
+    header p {
+        font-size: 1rem;
+    }
 }
