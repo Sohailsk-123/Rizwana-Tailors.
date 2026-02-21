@@ -1265,3 +1265,79 @@ a:hover {
     padding: 12px;
     font-size: 1.05rem;
 }
+/* =====================================================
+   HERO SECTION – IMAGE FIRST (NO PLAIN COLOR)
+   ===================================================== */
+
+header {
+    position: relative;
+
+    /* MAIN IMAGE */
+    background:
+        linear-gradient(
+            rgba(246, 242, 236, 0.65),
+            rgba(246, 242, 236, 0.65)
+        ),
+        url("images/hero/hero-cottage.jpg") center / cover no-repeat;
+
+    padding: 100px 20px 120px;
+    text-align: center;
+    border-bottom: 5px solid var(--sage);
+}
+
+/* Remove any old plain backgrounds */
+header {
+    background-color: transparent !important;
+}
+
+/* Soft vignette effect */
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at center,
+        rgba(255,255,255,0.15),
+        rgba(47,62,52,0.25)
+    );
+    z-index: 0;
+}
+
+/* Keep content above overlays */
+header * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Hero title */
+header h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 2.8rem;
+    color: var(--olive);
+    margin-bottom: 12px;
+}
+
+/* Hero subtitle */
+header p {
+    font-size: 1.1rem;
+    color: var(--ink);
+    max-width: 720px;
+    margin: auto;
+    opacity: 0.95;
+}
+
+/* Hero buttons */
+header .btn {
+    margin-top: 24px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    header {
+        padding: 80px 15px 90px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+}
