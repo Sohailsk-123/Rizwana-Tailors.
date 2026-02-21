@@ -1275,8 +1275,8 @@ header {
     /* MAIN IMAGE */
     background:
         linear-gradient(
-            rgba(246, 242, 236, 0.65),
-            rgba(246, 242, 236, 0.65)
+            rgba(246, 242, 236, 0.55),
+            rgba(246, 242, 236, 0.55)
         ),
         url("images/hero/hero-cottage.jpg") center / cover no-repeat;
 
@@ -1389,7 +1389,7 @@ header .btn {
 
 /* Badges reversed */
 .about-badges span {
-    background: rgba(95, 111, 85, 0.15);
+    background: rgba(103, 115, 96, 0.15);
     color: var(--olive);
     border: 1px solid rgba(95, 111, 85, 0.25);
 }
