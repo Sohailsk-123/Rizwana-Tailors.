@@ -1230,3 +1230,38 @@ a {
 a:hover {
     color: var(--sage-dark);
 }
+/* =====================================================
+   HOME CATEGORIES – COTTAGECORE ACCENTS
+   ===================================================== */
+
+.home-categories {
+    background: linear-gradient(135deg, var(--paper), var(--linen));
+    padding: 60px 20px;
+}
+
+.category-card {
+    background: var(--paper);
+    border-radius: 26px;
+    box-shadow: 0 14px 35px rgba(0,0,0,0.12);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 45px rgba(0,0,0,0.18);
+}
+
+.category-card img {
+    border-radius: 22px 22px 0 0;
+}
+
+/* Label like fabric tag */
+.card-label {
+    background: linear-gradient(135deg, var(--sage), var(--sage-dark));
+    color: #ffffff;
+    font-family: "Playfair Display", serif;
+    letter-spacing: 0.5px;
+    padding: 12px;
+    font-size: 1.05rem;
+}
