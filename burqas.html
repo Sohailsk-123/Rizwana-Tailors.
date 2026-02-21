@@ -176,18 +176,27 @@
 <script>
 let selectedDesignId = "";
 let selectedDesignName = "";
+let selectedDesignPrice = "";
 let imagesList = [];
 let currentIndex = 0;
 
-function openModal(img) {
-    selectedDesignId = img.dataset.id;          // INTERNAL CODE
-    selectedDesignName = img.dataset.name;      // DISPLAY NAME
+/* ===== OPEN MODAL ===== */
+function openModal(card) {
+    selectedDesignId = card.dataset.id;
+    selectedDesignName = card.dataset.name || "";
+    selectedDesignPrice = card.dataset.price || "";
 
-    imagesList = img.dataset.images.split(",");
+    imagesList = card.dataset.images.split(",").map(i => i.trim());
     currentIndex = 0;
 
-    document.getElementById("modalImage").src = imagesList[0].trim();
-    document.getElementById("modalCaption").innerText = selectedDesignName;
+    document.getElementById("modalImage").src = imagesList[currentIndex];
+
+    let caption = selectedDesignName;
+    if (selectedDesignPrice && selectedDesignPrice !== "₹.") {
+        caption += " • " + selectedDesignPrice;
+    }
+    document.getElementById("modalCaption").textContent = caption;
+
     document.getElementById("imageModal").style.display = "block";
 
     const productLink =
@@ -196,20 +205,35 @@ function openModal(img) {
         "#" +
         selectedDesignId;
 
-    const message = encodeURIComponent(
-        "Hello Rizwana,\n\n" +
-        "I am interested in this dress material:\n" +
-        selectedDesignName +
-        "\n\nReference link:\n" +
-        productLink +
-        "\n\nPlease share the price and availability."
-    );
-
     document.getElementById("whatsappLink").href =
-        "https://wa.me/917075721372?text=" + message;
+        "https://wa.me/917075721372?text=" +
+        encodeURIComponent(
+            "Hello Rizwana,\n\n" +
+            "I am interested in this burqa:\n" +
+            selectedDesignName +
+            "\n\nReference link:\n" +
+            productLink
+        );
 
+    renderDots();
     window.location.hash = selectedDesignId;
 }
+
+/* ===== SLIDER ===== */
+function nextImage() {
+    if (imagesList.length <= 1) return;
+    currentIndex = (currentIndex + 1) % imagesList.length;
+    document.getElementById("modalImage").src = imagesList[currentIndex];
+    renderDots();
+}
+
+function prevImage() {
+    if (imagesList.length <= 1) return;
+    currentIndex = (currentIndex - 1 + imagesList.length) % imagesList.length;
+    document.getElementById("modalImage").src = imagesList[currentIndex];
+    renderDots();
+}
+
 function renderDots() {
     const dots = document.getElementById("sliderDots");
     dots.innerHTML = "";
@@ -219,62 +243,50 @@ function renderDots() {
         if (i === currentIndex) dot.classList.add("active");
         dot.onclick = () => {
             currentIndex = i;
-            document.getElementById("modalImage").src =
-                imagesList[currentIndex].trim();
+            document.getElementById("modalImage").src = imagesList[currentIndex];
             renderDots();
         };
         dots.appendChild(dot);
     });
 }
 
+/* ===== CLOSE MODAL ===== */
 function closeModal() {
     document.getElementById("imageModal").style.display = "none";
     history.pushState("", document.title, window.location.pathname);
 }
 
+/* ===== ADD TO CART ===== */
 function addToCart() {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     cart.push({
+        id: selectedDesignId,
         name: selectedDesignName,
-        code: selectedDesignId,
+        price: selectedDesignPrice,
+        image: imagesList[currentIndex],
         link:
             window.location.origin +
             window.location.pathname +
             "#" +
-            selectedDesignId,
-        image: document.getElementById("modalImage").src
+            selectedDesignId
     });
 
     localStorage.setItem("cart", JSON.stringify(cart));
     alert("Added to cart ✅");
 }
 
-/* AUTO-OPEN PRODUCT FROM LINK */
+/* ===== AUTO OPEN FROM LINK ===== */
 window.onload = function () {
     const hash = window.location.hash.replace("#", "");
     if (!hash) return;
 
-    document.querySelectorAll(".gallery img").forEach(img => {
-        if (img.dataset.id === hash) {
-            openModal(img);
+    document.querySelectorAll(".product-card").forEach(card => {
+        if (card.dataset.id === hash) {
+            openModal(card);
         }
     });
 };
-function nextImage() {
-    if (!imagesList.length) return;
-    currentIndex = (currentIndex + 1) % imagesList.length;
-    document.getElementById("modalImage").src =
-        imagesList[currentIndex].trim();
-}
-
-function prevImage() {
-    if (!imagesList.length) return;
-    currentIndex =
-        (currentIndex - 1 + imagesList.length) % imagesList.length;
-    document.getElementById("modalImage").src =
-        imagesList[currentIndex].trim();
-}
 </script>
 </body>
 </html>
