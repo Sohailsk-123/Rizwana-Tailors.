@@ -116,8 +116,8 @@
      data-id="S-DG-006"
      data-name="Dola Silk Floral Printed Saree" 
      data-price="₹999"
-     data-images="images/sarees/s-dg-003-1.jpg,
-                  images/sarees/s-dg-003-2.jpg"
+     data-images="images/sarees/s-dg-006-1.jpg,
+                  images/sarees/s-dg-006-2.jpg"
      onclick="openModal(this)">
     <img src="images/sarees/s-dg-006-1.jpg" alt="Dola Silk Floral Printed Saree ">
     <div class="product-info">
@@ -322,6 +322,25 @@ window.onload = function () {
         }
     });
 };
+
+function addToCart() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({
+        id: selectedDesignId,
+        name: selectedDesignName,
+        price: selectedDesignPrice,
+        image: imagesList[currentIndex],
+        link:
+            window.location.origin +
+            window.location.pathname +
+            "#" +
+            selectedDesignId
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Added to cart ✅");
+}
 </script>
 
 </body>
