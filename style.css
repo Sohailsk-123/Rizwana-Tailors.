@@ -808,7 +808,7 @@ footer {
 .about-card {
     max-width: 900px;
     margin: auto;
-    background: linear-gradient(135deg, #0f4c5c, #1b6f82);
+    background: linear-gradient(135deg, #0f4c8c, #1b6f82);
     color: #ffffff;
     padding: 35px 30px;
     border-radius: 22px;
@@ -886,4 +886,150 @@ footer {
     font-size: 1.1rem;
     font-weight: 600;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+/* =====================================================
+   EARTHY & SERENE GLOBAL THEME
+   ===================================================== */
+
+/* ---------- BODY ---------- */
+body {
+    background-color: #f6f5f2;
+    color: #2f3e34;
+    font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* ---------- HEADER ---------- */
+header {
+    background: linear-gradient(135deg, #5b6f55, #7a8f72);
+    color: #ffffff;
+}
+
+header h1 {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+header p {
+    opacity: 0.95;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn,
+.contact-btn {
+    background: linear-gradient(135deg, #8b6f4e, #a38863);
+    color: #ffffff;
+    border-radius: 40px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.btn:hover,
+.contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+}
+
+/* ---------- SECTION HEADINGS ---------- */
+section h2 {
+    color: #5b6f55;
+    font-weight: 600;
+}
+
+/* ---------- PRODUCT CARDS ---------- */
+.product-card {
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.product-name {
+    color: #2f3e34;
+}
+
+.product-price {
+    color: #8b6f4e;
+}
+
+/* ---------- GALLERY GRID ---------- */
+.images {
+    gap: 18px;
+}
+
+/* ---------- MODAL ---------- */
+.modal {
+    background: rgba(47, 62, 52, 0.85);
+}
+
+.modal-box {
+    background: #ffffff;
+    border-radius: 22px;
+}
+
+#modalCaption {
+    color: #2f3e34;
+    font-weight: 600;
+}
+
+/* ---------- SLIDER CONTROLS ---------- */
+.slider-controls span {
+    color: #5b6f55;
+}
+
+.slider-dots span.active {
+    background: #5b6f55;
+}
+
+/* ---------- ABOUT SECTION ---------- */
+.about-modern {
+    background: linear-gradient(135deg, #eef1ec, #f6f5f2);
+}
+
+.about-card {
+    background: linear-gradient(135deg, #5b6f55, #7a8f72);
+}
+
+.about-badges span {
+    background: rgba(255,255,255,0.2);
+}
+
+/* ---------- CONTACT SECTION ---------- */
+.contact-modern {
+    background: linear-gradient(135deg, #f2f0eb, #ffffff);
+}
+
+.contact-card {
+    background: #ffffff;
+}
+
+.contact-item {
+    color: #2f3e34;
+}
+
+/* ---------- AUTO SLIDER (HOME) ---------- */
+.auto-slider-section {
+    background: #f2f0eb;
+}
+
+.auto-slider-track img {
+    border-radius: 16px;
+}
+
+/* ---------- FLOATING WHATSAPP ---------- */
+.whatsapp-community {
+    background: #25d366;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+    background: #2f3e34;
+    color: #e6e4dd;
+}
+
+/* ---------- LINKS ---------- */
+a {
+    color: #5b6f55;
+}
+
+a:hover {
+    color: #8b6f4e;
 }
