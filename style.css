@@ -1033,3 +1033,200 @@ a {
 a:hover {
     color: #8b6f4e;
 }
+/* =====================================================
+   COTTAGECORE EARTHY BOUTIQUE THEME
+   Inspired by soft linen, sage green & warm clay
+   ===================================================== */
+
+/* ---------- ROOT COLORS ---------- */
+:root {
+    --sage: #a9b89c;
+    --sage-dark: #7f8f72;
+    --olive: #5f6f55;
+
+    --linen: #f6f2ec;
+    --paper: #faf7f3;
+    --peach: #e9c7b0;
+    --clay: #c9a38d;
+
+    --ink: #2f3e34;
+    --soft-shadow: rgba(0,0,0,0.08);
+}
+
+/* ---------- BODY ---------- */
+body {
+    background: var(--linen);
+    color: var(--ink);
+    font-family: "Segoe UI", "Poppins", system-ui, sans-serif;
+}
+
+/* ---------- HEADER ---------- */
+header {
+    background: linear-gradient(180deg, var(--paper), var(--linen));
+    border-bottom: 6px solid var(--sage);
+}
+
+header h1 {
+    font-family: "Playfair Display", serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--olive);
+}
+
+header p {
+    color: #6d7a6a;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn,
+.contact-btn {
+    background: linear-gradient(135deg, var(--sage), var(--sage-dark));
+    color: #fff;
+    border-radius: 999px;
+    padding: 14px 34px;
+    font-weight: 600;
+    box-shadow: 0 10px 25px var(--soft-shadow);
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, var(--sage-dark), var(--olive));
+}
+
+/* ---------- SECTION HEADINGS ---------- */
+section h2 {
+    font-family: "Playfair Display", serif;
+    color: var(--olive);
+    letter-spacing: 1px;
+}
+
+/* ---------- PRODUCT GRID ---------- */
+.images {
+    gap: 22px;
+}
+
+/* ---------- PRODUCT CARD ---------- */
+.product-card {
+    background: var(--paper);
+    border-radius: 22px;
+    padding: 10px;
+    box-shadow: 0 14px 35px var(--soft-shadow);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+}
+
+.product-card img {
+    border-radius: 18px;
+}
+
+/* ---------- PRODUCT INFO ---------- */
+.product-info {
+    padding: 14px 10px 8px;
+    text-align: center;
+}
+
+.product-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.product-price {
+    font-size: 0.95rem;
+    color: var(--sage-dark);
+}
+
+/* ---------- AUTO SLIDER ---------- */
+.auto-slider-section {
+    background: linear-gradient(180deg, var(--paper), var(--linen));
+}
+
+.auto-slider-track img {
+    border-radius: 20px;
+    background: var(--paper);
+}
+
+/* ---------- MODAL ---------- */
+.modal {
+    background: rgba(47, 62, 52, 0.85);
+}
+
+.modal-box {
+    background: var(--paper);
+    border-radius: 28px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+}
+
+#modalCaption {
+    font-family: "Playfair Display", serif;
+    font-size: 1.1rem;
+    color: var(--olive);
+}
+
+/* ---------- SLIDER CONTROLS ---------- */
+.slider-controls span {
+    color: var(--olive);
+    font-size: 34px;
+}
+
+.slider-dots span {
+    background: #d8d1c6;
+}
+
+.slider-dots span.active {
+    background: var(--sage-dark);
+}
+
+/* ---------- ABOUT SECTION ---------- */
+.about-modern {
+    background: linear-gradient(135deg, var(--paper), var(--linen));
+}
+
+.about-card {
+    background: linear-gradient(135deg, var(--sage), var(--sage-dark));
+    color: #fff;
+    border-radius: 26px;
+}
+
+.about-badges span {
+    background: rgba(255,255,255,0.25);
+}
+
+/* ---------- CONTACT SECTION ---------- */
+.contact-modern {
+    background: linear-gradient(135deg, var(--peach), var(--linen));
+}
+
+.contact-card {
+    background: var(--paper);
+    border-radius: 26px;
+}
+
+.contact-item {
+    color: var(--ink);
+}
+
+/* ---------- FLOATING WHATSAPP ---------- */
+.whatsapp-community {
+    background: var(--sage-dark);
+    color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+    background: var(--olive);
+    color: #f2efe9;
+}
+
+/* ---------- LINKS ---------- */
+a {
+    color: var(--olive);
+}
+
+a:hover {
+    color: var(--sage-dark);
+}
