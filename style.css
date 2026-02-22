@@ -403,7 +403,6 @@ footer {
     display: flex;
     align-items: center;
     gap: 6px;
-    background: #25d366;
     color: #ffffff;
     padding: 8px 12px;
     border-radius: 30px;
@@ -1392,4 +1391,61 @@ header .btn {
     background: rgba(144, 155, 138, 0.15);
     color: var(--olive);
     border: 1px solid rgba(95, 111, 85, 0.25);
+}
+/* =====================================================
+   WHATSAPP BUTTON – EARTHY ACCENT (GLOBAL FIX)
+   ===================================================== */
+
+/* Main WhatsApp buttons */
+a[href*="wa.me"],
+.whatsapp-main,
+.whatsapp-btn,
+.contact-btn {
+    background: linear-gradient(
+        135deg,
+        var(--sage-dark),
+        var(--olive)
+    ) !important;
+
+    color: #ffffff !important;
+    border-radius: 999px;
+    padding: 14px 32px;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+    text-decoration: none;
+}
+
+/* Hover */
+a[href*="wa.me"]:hover,
+.whatsapp-main:hover,
+.whatsapp-btn:hover,
+.contact-btn:hover {
+    background: linear-gradient(
+        135deg,
+        var(--olive),
+        var(--sage-dark)
+    ) !important;
+}
+
+/* Floating WhatsApp community button */
+.whatsapp-community {
+    background: linear-gradient(
+        135deg,
+        var(--sage-dark),
+        var(--olive)
+    ) !important;
+
+    color: #ffffff !important;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Floating hover */
+.whatsapp-community:hover {
+    transform: scale(1.05);
 }
