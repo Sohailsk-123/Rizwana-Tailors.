@@ -130,39 +130,21 @@
     </p>
 </section>
 <script>
-/* ===== LEHENGA AUTO SLIDER DATA ===== */
+/* ===== DEVICE CHECK ===== */
+const isMobile = window.innerWidth <= 768;
 
-const stitchingLehengas = [
-    {
-        name: "Pattu Lehenga",
-        image: "images/dress-stitching/lehenga/d-lg-a1-1.jpg"
-    },
-    {
-        name: "Pattu Lehenga Prince Design",
-        image: "images/dress-stitching/lehenga/d-lg-a1-2.jpg"
-    },
-    {
-        name: "Lehenga + Short Blouse Design",
-        image: "images/dress-stitching/lehenga/d-lg-a1-3.jpg"
-    },
-    {
-        name: "Lehenga + Cut Work Blouse Design",
-        image: "images/dress-stitching/lehenga/d-lg-a1-4.jpg"
-    }
-];
+/* ===== LEHENGA AUTO SLIDER ===== */
 
 let stitchIndex = 0;
 let sliderInterval = null;
 
-/* Elements */
 const imgEl = document.getElementById("stitchingSliderImage");
 const nameEl = document.getElementById("stitchingSliderName");
 const sliderEl = document.getElementById("stitchingSlider");
 
-/* Speed: Desktop 1s, Mobile 2s */
-const SLIDE_TIME = window.innerWidth <= 600 ? 2000 : 1000;
+const SLIDE_TIME = isMobile ? 2000 : 1000;
 
-/* Start slider */
+/* START SLIDER */
 function startStitchingSlider() {
     sliderInterval = setInterval(() => {
         stitchIndex = (stitchIndex + 1) % stitchingLehengas.length;
@@ -178,16 +160,23 @@ function startStitchingSlider() {
     }, SLIDE_TIME);
 }
 
-/* Stop slider */
+/* STOP SLIDER */
 function stopStitchingSlider() {
     clearInterval(sliderInterval);
 }
 
-/* Pause on hover */
-sliderEl.addEventListener("mouseenter", stopStitchingSlider);
-sliderEl.addEventListener("mouseleave", startStitchingSlider);
+/* ================= DESKTOP: PAUSE ON HOVER ================= */
+if (!isMobile) {
+    sliderEl.addEventListener("mouseenter", stopStitchingSlider);
+    sliderEl.addEventListener("mouseleave", startStitchingSlider);
+}
 
-/* Init */
+/* ================= CLICK / TAP ================= */
+sliderEl.addEventListener("click", function () {
+    openLehengaModal();   // ✅ always opens modal
+});
+
+/* INIT */
 startStitchingSlider();
 </script>
 
