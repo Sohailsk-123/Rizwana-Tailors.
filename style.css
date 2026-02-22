@@ -1597,13 +1597,13 @@ a[href*="wa.me"]:hover,
 /* Badge */
 .stitching-badge {
     position: absolute;
-    top: 14px;
-    left: 14px;
+    bottom: 10px;
+    left: 10px;
     background: linear-gradient(135deg, var(--sage-dark), var(--olive));
     color: #ffffff;
     padding: 6px 14px;
     font-size: 0.8rem;
-    border-radius: 20px;
+    border-radius: 10px;
     font-weight: 600;
     z-index: 2;
     box-shadow: 0 6px 18px rgba(0,0,0,0.25);
