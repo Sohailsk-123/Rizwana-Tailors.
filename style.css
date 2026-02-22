@@ -1510,3 +1510,27 @@ a[href*="wa.me"]:hover,
     max-height: 65vh;
     object-fit: contain;
 }
+/* =====================================================
+   LEHENGA MODAL NAME – READABILITY FIX
+   ===================================================== */
+
+#lehengaName {
+    margin-top: 16px;
+    padding: 10px 16px;
+    background: rgba(250, 247, 243, 0.95); /* paper */
+    color: var(--olive);                  /* dark readable */
+    font-family: "Playfair Display", serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    border-radius: 18px;
+    display: inline-block;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Mobile fine-tune */
+@media (max-width: 600px) {
+    #lehengaName {
+        font-size: 1rem;
+        padding: 8px 14px;
+    }
+}
