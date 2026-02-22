@@ -17,47 +17,6 @@
    👥
 </a>
 
-<script>
-/* ===== LEHENGA AUTO SLIDER DATA ===== */
-
-const stitchingLehengas = [
-    {
-        name: "Pattu Lehenga",
-        image: "images/dress-stitching/lehenga/d-lg-a1-1.jpg"
-    },
-    {
-        name: "Pattu Lehenga Prince Design",
-        image: "images/dress-stitching/lehenga/d-lg-a1-2.jpg"
-    },
-    {
-        name: "Lehenga + Short Blouse Design",
-        image: "images/dress-stitching/lehenga/d-lg-a1-3.jpg"
-    },
-    {
-        name: "Lehenga + Cut Work Blouse Design",
-        image: "images/dress-stitching/lehenga/d-lg-a1-4.jpg"
-    }
-];
-
-let stitchIndex = 0;
-
-const imgEl = document.getElementById("stitchingSliderImage");
-const nameEl = document.getElementById("stitchingSliderName");
-
-setInterval(() => {
-    stitchIndex = (stitchIndex + 1) % stitchingLehengas.length;
-
-    /* Fade effect */
-    imgEl.style.opacity = 0;
-
-    setTimeout(() => {
-        imgEl.src = stitchingLehengas[stitchIndex].image;
-        nameEl.innerText = stitchingLehengas[stitchIndex].name;
-        imgEl.style.opacity = 1;
-    }, 400);
-
-}, 1000); // 1 second
-</script>
 
 <body>
 
@@ -165,6 +124,48 @@ setInterval(() => {
         Pattu Lehenga
     </p>
 </section>
+
+<script>
+/* ===== LEHENGA AUTO SLIDER DATA ===== */
+
+const stitchingLehengas = [
+    {
+        name: "Pattu Lehenga",
+        image: "images/dress-stitching/lehenga/d-lg-a1-1.jpg"
+    },
+    {
+        name: "Pattu Lehenga Prince Design",
+        image: "images/dress-stitching/lehenga/d-lg-a1-2.jpg"
+    },
+    {
+        name: "Lehenga + Short Blouse Design",
+        image: "images/dress-stitching/lehenga/d-lg-a1-3.jpg"
+    },
+    {
+        name: "Lehenga + Cut Work Blouse Design",
+        image: "images/dress-stitching/lehenga/d-lg-a1-4.jpg"
+    }
+];
+
+let stitchIndex = 0;
+
+const imgEl = document.getElementById("stitchingSliderImage");
+const nameEl = document.getElementById("stitchingSliderName");
+
+setInterval(() => {
+    stitchIndex = (stitchIndex + 1) % stitchingLehengas.length;
+
+    /* Fade effect */
+    imgEl.style.opacity = 0;
+
+    setTimeout(() => {
+        imgEl.src = stitchingLehengas[stitchIndex].image;
+        nameEl.innerText = stitchingLehengas[stitchIndex].name;
+        imgEl.style.opacity = 1;
+    }, 400);
+
+}, 1000); // 1 second
+</script>
 
 <!-- STITCHING SECTION -->
 <section class="division stitching-section">
