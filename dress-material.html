@@ -10,6 +10,12 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
+
+<!-- ADD TO CART TOAST -->
+<div id="cartToast" class="cart-toast">
+    ✔ Added to cart
+</div>
+
 <body>
 
 <!-- FLOATING WHATSAPP COMMUNITY BUTTON -->
@@ -107,6 +113,121 @@
         <div class="product-price">₹1,999</div>
     </div>
 </div>
+
+<!-- PRODUCT 20 -->
+<div class="product-card"
+     data-id="DM-WD-020"
+     data-name="Designer Work Black Dress Material"
+     data-price="₹999"
+     data-images="images/dress-material/dm-wd-020-1.jpg"
+     onclick="openModal(this)">
+    <img src="images/dress-material/dm-wd-020-1.jpg" alt="Designer Work Black Dress Material">
+    <div class="product-info">
+        <div class="product-name">Designer Work Black Dress Material</div>
+        <div class="product-price">₹999</div>
+    </div>
+</div>
+
+<!-- PRODUCT 21 -->
+<div class="product-card"
+     data-id="DM-WD-021"
+     data-name="Floral Work Dress Material"
+     data-price="₹999"
+     data-images="images/dress-material/dm-wd-021-1.jpg"
+     onclick="openModal(this)">
+    <img src="images/dress-material/dm-wd-021-1.jpg" alt="Floral Work Dress Material">
+    <div class="product-info">
+        <div class="product-name">Floral Work Dress Material</div>
+        <div class="product-price">₹999</div>
+    </div>
+</div>
+
+<!-- PRODUCT 22 -->
+<div class="product-card"
+     data-id="DM-WD-022"
+     data-name="Green Work Dress Material"
+     data-price="₹1,699"
+     data-images="images/dress-material/dm-wd-022-1.jpg"
+     onclick="openModal(this)">
+    <img src="images/dress-material/dm-wd-022-1.jpg" alt="Green Work Dress Material">
+    <div class="product-info">
+        <div class="product-name">Green Work Dress Material</div>
+        <div class="product-price">₹1,699</div>
+    </div>
+</div>
+
+<!-- PRODUCT 23 -->
+<div class="product-card"
+     data-id="DM-WD-023"
+     data-name="Pink Work Dress Material"
+     data-price="₹750"
+     data-images="images/dress-material/dm-wd-023-1.jpg"
+     onclick="openModal(this)">
+    <img src="images/dress-material/dm-wd-023-1.jpg" alt="Pink Work Dress Material">
+    <div class="product-info">
+        <div class="product-name">Pink Work Dress Material</div>
+        <div class="product-price">₹750</div>
+    </div>
+</div>
+
+<!-- PRODUCT 24 -->
+<div class="product-card"
+     data-id="DM-WD-024"
+     data-name="Light Green Work Dress Material"
+     data-price="₹750"
+     data-images="images/dress-material/dm-wd-024-1.jpg"
+     onclick="openModal(this)">
+    <img src="images/dress-material/dm-wd-024-1.jpg" alt="Light Green Work Dress Material">
+    <div class="product-info">
+        <div class="product-name">Light Green Work Dress Material</div>
+        <div class="product-price">₹750</div>
+    </div>
+</div>
+
+
+
+<!-- PRODUCT 17 -->
+<div class="product-card"
+     data-id="DM-DG-017"
+     data-name="Printed Dress Material"
+     data-price="₹650"
+     data-images="images/dress-material/dm-flo-017-1.jpg"
+     onclick="openModal(this)">
+    <img src="images/dress-material/dm-flo-017-1.jpg" alt="Printed Dress Material">
+    <div class="product-info">
+        <div class="product-name">Printed Dress Material</div>
+        <div class="product-price">₹650</div>
+    </div>
+</div>
+
+<!-- PRODUCT 18 -->
+<div class="product-card"
+     data-id="DM-PI-018"
+     data-name="Pink work Dress Material"
+     data-price="₹799"
+     data-images="images/dress-material/dm-pi-018-1.jpg"
+     onclick="openModal(this)">
+    <img src="images/dress-material/dm-pi-018-1.jpg" alt="Pink work Dress Material">
+    <div class="product-info">
+        <div class="product-name">Pink work Dress Material</div>
+        <div class="product-price">₹799</div>
+    </div>
+</div>
+
+<!-- PRODUCT 19 -->
+<div class="product-card"
+     data-id="DM-W-019"
+     data-name="Green Work Dress Material"
+     data-price="₹850"
+     data-images="images/dress-material/dm-w-019-1.jpg"
+     onclick="openModal(this)">
+    <img src="images/dress-material/dm-w-019-1.jpg" alt="Green Work Dress Material">
+    <div class="product-info">
+        <div class="product-name">Green Work Dress Material</div>
+        <div class="product-price">₹850</div>
+    </div>
+</div>
+
 
 <!-- PRODUCT 1 -->
 <div class="product-card"
@@ -402,7 +523,13 @@ function addToCart() {
     });
 
     localStorage.setItem("cart", JSON.stringify(cart));
-    alert("Added to cart ✅");
+        // SHOW TOAST
+    const toast = document.getElementById("cartToast");
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2000);
 }
 
 /* AUTO-OPEN PRODUCT FROM LINK */

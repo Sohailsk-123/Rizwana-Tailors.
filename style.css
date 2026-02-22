@@ -1479,3 +1479,30 @@ a[href*="wa.me"]:hover,
 .product-card.sold img {
     filter: grayscale(40%);
 }
+/* =====================================================
+   ADD TO CART TOAST (NO BROWSER ALERT)
+   ===================================================== */
+
+.cart-toast {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--sage-dark), var(--olive));
+    color: #ffffff;
+    padding: 14px 22px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 9999;
+}
+
+/* Visible state */
+.cart-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-8px);
+}

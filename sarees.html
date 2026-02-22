@@ -16,6 +16,11 @@
    👥  
 </a>
 
+<!-- ADD TO CART TOAST -->
+<div id="cartToast" class="cart-toast">
+    ✔ Added to cart
+</div>
+
 <body>
 
 <header>
@@ -340,7 +345,13 @@ function addToCart() {
     });
 
     localStorage.setItem("cart", JSON.stringify(cart));
-    alert("Added to cart ✅");
+    // SHOW TOAST
+    const toast = document.getElementById("cartToast");
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2000);
 }
 </script>
 
