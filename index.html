@@ -130,55 +130,85 @@
     </p>
 </section>
 <script>
-/* ===== DEVICE CHECK ===== */
-const isMobile = window.innerWidth <= 768;
+const stitchingLehengas = [
+    {
+        name: "Pattu Lehenga",
+        image: "images/dress-stitching/lehenga/d-lg-a1-1.jpg"
+    },
+    {
+        name: "Pattu Lehenga Prince Design",
+        image: "images/dress-stitching/lehenga/d-lg-a1-2.jpg"
+    },
+    {
+        name: "Lehenga + Short Blouse Design",
+        image: "images/dress-stitching/lehenga/d-lg-a1-3.jpg"
+    },
+    {
+        name: "Lehenga + Cut Work Blouse Design",
+        image: "images/dress-stitching/lehenga/d-lg-a1-4.jpg"
+    }
+];
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
-/* ===== LEHENGA AUTO SLIDER ===== */
+    const slider = document.getElementById("stitchingSlider");
+    const imgEl = document.getElementById("stitchingSliderImage");
+    const nameEl = document.getElementById("stitchingSliderName");
 
-let stitchIndex = 0;
-let sliderInterval = null;
+    if (!slider || !imgEl || !nameEl) {
+        console.error("Stitching slider elements missing");
+        return;
+    }
 
-const imgEl = document.getElementById("stitchingSliderImage");
-const nameEl = document.getElementById("stitchingSliderName");
-const sliderEl = document.getElementById("stitchingSlider");
+    let index = 0;
+    let interval = null;
+    const isMobile = window.innerWidth <= 768;
+    const SPEED = isMobile ? 2000 : 1000;
 
-const SLIDE_TIME = isMobile ? 2000 : 1000;
-
-/* START SLIDER */
-function startStitchingSlider() {
-    sliderInterval = setInterval(() => {
-        stitchIndex = (stitchIndex + 1) % stitchingLehengas.length;
-
+    function showSlide(i) {
         imgEl.style.opacity = 0;
 
         setTimeout(() => {
-            imgEl.src = stitchingLehengas[stitchIndex].image;
-            nameEl.innerText = stitchingLehengas[stitchIndex].name;
+            imgEl.src = stitchingLehengas[i].image;
+            nameEl.innerText = stitchingLehengas[i].name;
             imgEl.style.opacity = 1;
-        }, 400);
+        }, 300);
+    }
 
-    }, SLIDE_TIME);
+    function startSlider() {
+        interval = setInterval(() => {
+            index = (index + 1) % stitchingLehengas.length;
+            showSlide(index);
+        }, SPEED);
+    }
+
+    function stopSlider() {
+        clearInterval(interval);
+    }
+
+    /* DESKTOP: pause on hover */
+    if (!isMobile) {
+        slider.addEventListener("mouseenter", stopSlider);
+        slider.addEventListener("mouseleave", startSlider);
+    }
+
+    /* CLICK / TAP: open modal */
+    slider.addEventListener("click", function () {
+        stopSlider();
+        openLehengaModal(); // ← MUST EXIST
+    });
+
+    function openLehengaModal() {
+    document.getElementById("lehengaModal").style.display = "block";
 }
 
-/* STOP SLIDER */
-function stopStitchingSlider() {
-    clearInterval(sliderInterval);
-}
+    /* INIT */
+    startSlider();
 
-/* ================= DESKTOP: PAUSE ON HOVER ================= */
-if (!isMobile) {
-    sliderEl.addEventListener("mouseenter", stopStitchingSlider);
-    sliderEl.addEventListener("mouseleave", startStitchingSlider);
-}
-
-/* ================= CLICK / TAP ================= */
-sliderEl.addEventListener("click", function () {
-    openLehengaModal();   // ✅ always opens modal
 });
-
-/* INIT */
-startStitchingSlider();
 </script>
+
 
 <!-- STITCHING SECTION -->
 <section class="division stitching-section">
