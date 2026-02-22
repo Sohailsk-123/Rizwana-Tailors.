@@ -1449,3 +1449,33 @@ a[href*="wa.me"]:hover,
 .whatsapp-community:hover {
     transform: scale(1.05);
 }
+/* =====================================================
+   SOLD PRODUCT STYLE
+   ===================================================== */
+
+/* Fade sold product */
+.product-card.sold {
+    position: relative;
+    opacity: 0.55;
+    pointer-events: none;
+}
+
+/* SOLD badge */
+.product-card.sold::after {
+    content: "SOLD";
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(95, 111, 85, 0.9); /* olive */
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Optional grayscale */
+.product-card.sold img {
+    filter: grayscale(40%);
+}
