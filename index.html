@@ -150,6 +150,18 @@ const stitchingLehengas = [
 ];
 </script>
 <script>
+/* ================= LEHENGA MODAL OPEN ================= */
+
+function openLehengaModal() {
+    const modal = document.getElementById("lehengaModal");
+    if (!modal) {
+        console.error("Lehenga modal not found");
+        return;
+    }
+    modal.style.display = "block";
+}
+</script>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
 
     const slider = document.getElementById("stitchingSlider");
@@ -199,9 +211,6 @@ document.addEventListener("DOMContentLoaded", function () {
         openLehengaModal(); // ← MUST EXIST
     });
 
-    function openLehengaModal() {
-    document.getElementById("lehengaModal").style.display = "block";
-}
 
     /* INIT */
     startSlider();
