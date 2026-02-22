@@ -1506,3 +1506,7 @@ a[href*="wa.me"]:hover,
     opacity: 1;
     transform: translateX(-50%) translateY(-8px);
 }
+#lehengaImage {
+    max-height: 65vh;
+    object-fit: contain;
+}
