@@ -114,7 +114,12 @@
 <section class="stitching-slider-section">
     <h2>Lehenga Stitching Designs</h2>
 
-    <div class="stitching-slider">
+    <div class="stitching-slider"
+         id="stitchingSlider"
+         onclick="openLehengaModal()">
+
+        <span class="stitching-badge">Custom Stitching Available</span>
+
         <img id="stitchingSliderImage"
              src="images/dress-stitching/lehenga/d-lg-a1-1.jpg"
              alt="Lehenga Stitching">
@@ -124,7 +129,6 @@
         Pattu Lehenga
     </p>
 </section>
-
 <script>
 /* ===== LEHENGA AUTO SLIDER DATA ===== */
 
@@ -148,23 +152,43 @@ const stitchingLehengas = [
 ];
 
 let stitchIndex = 0;
+let sliderInterval = null;
 
+/* Elements */
 const imgEl = document.getElementById("stitchingSliderImage");
 const nameEl = document.getElementById("stitchingSliderName");
+const sliderEl = document.getElementById("stitchingSlider");
 
-setInterval(() => {
-    stitchIndex = (stitchIndex + 1) % stitchingLehengas.length;
+/* Speed: Desktop 1s, Mobile 2s */
+const SLIDE_TIME = window.innerWidth <= 600 ? 2000 : 1000;
 
-    /* Fade effect */
-    imgEl.style.opacity = 0;
+/* Start slider */
+function startStitchingSlider() {
+    sliderInterval = setInterval(() => {
+        stitchIndex = (stitchIndex + 1) % stitchingLehengas.length;
 
-    setTimeout(() => {
-        imgEl.src = stitchingLehengas[stitchIndex].image;
-        nameEl.innerText = stitchingLehengas[stitchIndex].name;
-        imgEl.style.opacity = 1;
-    }, 400);
+        imgEl.style.opacity = 0;
 
-}, 1000); // 1 second
+        setTimeout(() => {
+            imgEl.src = stitchingLehengas[stitchIndex].image;
+            nameEl.innerText = stitchingLehengas[stitchIndex].name;
+            imgEl.style.opacity = 1;
+        }, 400);
+
+    }, SLIDE_TIME);
+}
+
+/* Stop slider */
+function stopStitchingSlider() {
+    clearInterval(sliderInterval);
+}
+
+/* Pause on hover */
+sliderEl.addEventListener("mouseenter", stopStitchingSlider);
+sliderEl.addEventListener("mouseleave", startStitchingSlider);
+
+/* Init */
+startStitchingSlider();
 </script>
 
 <!-- STITCHING SECTION -->

@@ -1585,3 +1585,31 @@ a[href*="wa.me"]:hover,
         height: 420px;
     }
 }
+/* =====================================================
+   STITCHING SLIDER – BADGE & INTERACTION
+   ===================================================== */
+
+.stitching-slider {
+    position: relative;
+    cursor: pointer;
+}
+
+/* Badge */
+.stitching-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: linear-gradient(135deg, var(--sage-dark), var(--olive));
+    color: #ffffff;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    font-weight: 600;
+    z-index: 2;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* Hover pause indicator (optional visual) */
+.stitching-slider:hover img {
+    filter: brightness(0.95);
+}
